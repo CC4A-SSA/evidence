@@ -1,0 +1,9 @@
+item,hazard,why,what_to_do,status
+All crops other than maize,drought,"The general rule uses maize's water-response factor (1.25). Published factors run from 0.70 (groundnut) to 1.25, and sorghum and millets are more drought tolerant.","Apply each crop's own factor and its Concern rainfall requirement; find factors for sorghum, millets, cassava and the other crops not in the FAO table.",logged
+All crops other than maize,heat,The heat rule rests on one maize study with a 30 C threshold.,"Find crop-specific heat-response evidence; where none exists, record an expert rule.",logged
+Maize,heat,The conversion from hot days to degree days is an assumption.,Compute degree days above 30 C from daily temperature for seasons at each stress level (pipeline session).,logged
+Rice,drought and heat,Irrigated and paddy rice do not respond to season rainfall in the way rainfed crops do.,Treat irrigated rice separately; use water-supply deficit rather than rainfall.,logged
+"Perennial tree crops (coffee, cocoa, tea)",drought and heat,Losses carry over between years and Concern has no profile for them.,Review crop-specific literature; define the season and thresholds.,logged
+"Roots and tubers, banana",drought,"Requirements are given per year, and the crops can pause growth and recover.",Review crop-specific literature.,logged
+"Cattle, sheep and goats, camels",drought and heat,No loss is defined for livestock. Heat acts through the temperature-humidity index and drought through forage.,"Agree the loss metric (milk, liveweight) and a framework for livestock systems; review the literature.",logged
+All,drought,Season totals ignore when the shortfall falls. Stress at flowering costs far more than the seasonal factor implies.,Use the growth-stage profiles from Concern that the Atlas has already digitised (hazards_prototype metadata/crop_climate_profiles.xlsx).,logged

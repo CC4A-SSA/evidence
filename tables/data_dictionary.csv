@@ -1,0 +1,78 @@
+table,field,type,required,allowed_values,description
+yield_benefit,practice_id,text,yes,practice register ID,"Practice, as in the practice register (e.g. C2.1)."
+yield_benefit,commodity,text,yes,commodity list,"A crop (maize), a commodity group (cereal) or general (any commodity the practice applies to). The most specific row available is used."
+yield_benefit,yield_change_pct,number,yes,,"Change in yield with the practice, as a percentage of yield without it. 12 = 12 % more; negative = a yield penalty."
+yield_benefit,low_pct,number,no,,Lower end of the range reported by the sources.
+yield_benefit,high_pct,number,no,,Upper end of the range reported by the sources.
+yield_benefit,evidence_ids,list,yes,evidence register,"Rows of the evidence register the value was taken from, separated by |."
+yield_benefit,confidence,text,yes,low | medium | high,"low, medium or high. See definitions."
+yield_benefit,note,text,no,,Anything a user of the value should know.
+hazard_mitigation,practice_id,text,yes,practice register ID,Practice.
+hazard_mitigation,commodity,text,yes,commodity list,"A crop, a commodity group, or general."
+hazard_mitigation,hazard,text,yes,drought | heat,drought or heat.
+hazard_mitigation,stress_level,text,yes,moderate | severe | extreme,"moderate, severe or extreme. See definitions."
+hazard_mitigation,mitigation_potential,text,yes,none | low | medium | high | total,"How much of the hazard's yield loss the practice prevents: none, low, medium, high or total. Converted to a percentage through the definitions table."
+hazard_mitigation,evidence_ids,list,yes,evidence register,Rows of the evidence register behind the rating.
+hazard_mitigation,confidence,text,yes,low | medium | high,"low, medium or high."
+hazard_mitigation,note,text,no,,"Anything a user should know, including a case where the practice makes the loss worse."
+hazard_loss,hazard,text,yes,drought | heat,drought or heat.
+hazard_loss,stress_level,text,yes,moderate | severe | extreme,"moderate, severe or extreme."
+hazard_loss,yield_loss_pct,number,yes,,"Yield lost when the hazard occurs at this level, with no practice, as a percentage of normal-season yield. One value for all commodities."
+hazard_loss,yield_loss_low_pct,number,yes,,Lower end of the plausible range for the loss.
+hazard_loss,yield_loss_high_pct,number,yes,,Upper end of the plausible range for the loss.
+hazard_loss,evidence_ids,list,yes,evidence register,Rows of the evidence register behind the value.
+hazard_loss,confidence,text,yes,low | medium | high,"low, medium or high."
+hazard_loss,note,text,no,,Anything a user should know.
+applicability,practice_id,text,yes,practice register ID,Practice.
+applicability,commodity_group,text,yes,commodity group,Commodity group. Every in-scope practice has a row for every group.
+applicability,applies,text,yes,yes | conditional | no,"yes, conditional or no."
+applicability,note,text,no,,"The condition, where applies = conditional."
+evidence_register,evidence_id,text,yes,,Identifier of the finding.
+evidence_register,source_id,text,yes,sources,Source the finding comes from.
+evidence_register,supports,text,yes,yield_benefit | hazard_mitigation | hazard_loss,"Which core table the finding feeds: yield_benefit, hazard_mitigation or hazard_loss."
+evidence_register,practice_id,text,no,practice register ID,Practice. Empty for hazard_loss findings.
+evidence_register,commodity,text,yes,commodity list,"Crop, group or general, as reported by the source."
+evidence_register,hazard,text,no,drought | heat,"Hazard, for hazard_mitigation and hazard_loss findings."
+evidence_register,stress_level,text,no,moderate | severe | extreme,"Stress level, where the source allows one to be assigned."
+evidence_register,finding,text,yes,,"What the source reports, in one or two sentences, in the source's own terms."
+evidence_register,value,number,no,,"The number reported, where there is one."
+evidence_register,value_low,number,no,,Lower bound reported.
+evidence_register,value_high,number,no,,Upper bound reported.
+evidence_register,unit,text,no,,"What the value is, e.g. percent yield change, response ratio, percent yield loss."
+evidence_register,evidence_type,text,yes,meta_analysis | synthesis | primary_study | own_analysis | expert_judgement,"meta_analysis, synthesis, primary_study, own_analysis or expert_judgement."
+evidence_register,region,text,yes,sub_saharan_africa | africa | global,Where the evidence is from.
+evidence_register,season_basis,text,yes,all_seasons | normal_seasons | stress_seasons | not_stated,"Whether the source reports all seasons together, normal seasons or stress seasons."
+evidence_register,n_studies,number,no,,"Number of studies behind the finding, where reported."
+evidence_register,locator,text,no,,"Where in the source: page, table or figure. Expected for every published source; empty only for expert judgement and our own analysis."
+evidence_register,note,text,no,,Limitations or anything needed to interpret the finding.
+sources,source_id,text,yes,,Identifier of the source.
+sources,citation,text,yes,,Full citation.
+sources,doi_or_url,text,no,,DOI or URL.
+sources,year,number,no,,Year of publication.
+sources,file,text,no,,Where the full text is kept in the team folder.
+crop_thresholds,commodity,text,yes,commodity list,Crop.
+crop_thresholds,ccw_rain_low_mm,number,no,,Concern Worldwide: lower end of the rainfall or water the crop needs over its cycle. Used as the crop's requirement.
+crop_thresholds,ccw_rain_high_mm,number,no,,Concern Worldwide: upper end of the stated range.
+crop_thresholds,ccw_rain_withstand_mm,number,no,,"Concern Worldwide: the least the crop is said to withstand, where stated."
+crop_thresholds,ccw_rain_basis,text,no,,Whether the Concern figure is for the growing cycle or the year.
+crop_thresholds,ccw_temp_opt_low_c,number,no,,Concern Worldwide: lower end of the optimal temperature range.
+crop_thresholds,ccw_temp_opt_high_c,number,no,,Concern Worldwide: upper end of the optimal temperature range.
+crop_thresholds,ccw_pages,text,no,,Pages of the Concern profile.
+crop_thresholds,ecocrop_species,text,no,,EcoCrop species the comparison values are for.
+crop_thresholds,ecocrop_rain_abs_min_mm,number,no,,EcoCrop: absolute minimum rainfall.
+crop_thresholds,ecocrop_rain_opt_min_mm,number,no,,EcoCrop: lower end of optimal rainfall.
+crop_thresholds,ecocrop_rain_opt_max_mm,number,no,,EcoCrop: upper end of optimal rainfall.
+crop_thresholds,ecocrop_temp_opt_max_c,number,no,,EcoCrop: upper end of optimal temperature.
+crop_thresholds,ecocrop_temp_abs_max_c,number,no,,EcoCrop: absolute maximum temperature.
+crop_thresholds,requirement_mm,number,no,,"Season rainfall requirement used for the stress levels: the Concern lower figure, or EcoCrop's optimum minimum where Concern has none. Empty where the only figure is per year."
+crop_thresholds,drought_moderate_mm,number,no,,Moderate drought: season rainfall below this (100 % of the requirement).
+crop_thresholds,drought_severe_mm,number,no,,Severe drought: below this (80 % of the requirement).
+crop_thresholds,drought_extreme_mm,number,no,,Extreme drought: below this (60 % of the requirement).
+crop_thresholds,heat_threshold_c,number,no,,Heat: a hot day is one with maximum temperature above this (top of the Concern optimal range).
+crop_thresholds,preferred,text,yes,concern | ecocrop,"Which source to use: concern (tailored to Africa, preferred) or ecocrop where Concern gives no usable value."
+crop_thresholds,note,text,no,,"Caveats, including figures printed with an error in the Concern document."
+deep_dive_log,item,text,yes,,"Crop, animal or group the general rule should be replaced for."
+deep_dive_log,hazard,text,yes,,"drought, heat, or both."
+deep_dive_log,why,text,yes,,Why the general rule is likely to be wrong for it.
+deep_dive_log,what_to_do,text,yes,,What the deep dive would consist of.
+deep_dive_log,status,text,yes,,"logged, in progress or done."

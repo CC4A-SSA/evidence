@@ -1,0 +1,8 @@
+practice_id,commodity,hazard,stress_level,mitigation_potential,evidence_ids,confidence,note
+C2.2,maize,drought,moderate,low,E-0103|E-0104,low,DRAFT rating. The sources give direction only; the level is a judgement for Pete to confirm or change.
+C2.2,maize,drought,severe,low,E-0104,low,DRAFT rating. The sources give direction only; the level is a judgement for Pete to confirm or change.
+C2.2,maize,heat,moderate,low,E-0105,low,DRAFT rating. The sources give direction only; the level is a judgement for Pete to confirm or change.
+C2.1,cereal,drought,moderate,low,E-0106,low,DRAFT rating. The sources give direction only; the level is a judgement for Pete to confirm or change. Evidence is for mulching.
+C3.1,cereal,drought,moderate,low,E-0108,low,DRAFT rating. The sources give direction only; the level is a judgement for Pete to confirm or change.
+C3.3,cocoa,heat,moderate,low,E-0116,low,DRAFT rating. The sources give direction only; the level is a judgement for Pete to confirm or change.
+G1.2,general,drought,moderate,none,E-0120,low,DRAFT rating. The sources give direction only; the level is a judgement for Pete to confirm or change. The practice does better where rainfall is higher.

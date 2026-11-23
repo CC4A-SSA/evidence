@@ -1,0 +1,7 @@
+hazard,stress_level,band_low,band_high,central_at,unit,evidence_ids,confidence,note
+drought,moderate,0.8,1.0,0.9,season rainfall as a fraction of the crop's requirement,E-0001|E-0003|E-0005,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+drought,severe,0.6,0.8,0.7,season rainfall as a fraction of the crop's requirement,E-0001|E-0003|E-0005,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+drought,extreme,0,0.6,0.5,season rainfall as a fraction of the crop's requirement,E-0001|E-0003|E-0005,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+heat,moderate,7,14,10,hot days per month,E-0006|E-0007,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+heat,severe,14,21,17.5,hot days per month,E-0006|E-0007,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+heat,extreme,21,30,25,hot days per month,E-0006|E-0007,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."

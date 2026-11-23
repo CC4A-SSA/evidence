@@ -1,0 +1,6 @@
+# No full-text PDFs or other copyrighted documents in this public repository.
+*.pdf
+*.docx
+*.xlsx
+__pycache__/
+.DS_Store

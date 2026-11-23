@@ -1,0 +1,7 @@
+hazard,stress_level,yield_loss_pct,yield_loss_low_pct,yield_loss_high_pct,evidence_ids,confidence,note
+drought,moderate,12,0,25,E-0001|E-0003|E-0005,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+drought,severe,38,25,75,E-0001|E-0003|E-0005,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+drought,extreme,62,50,100,E-0001|E-0003|E-0005,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+heat,moderate,20,8,56,E-0006|E-0007,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+heat,severe,35,17,84,E-0006|E-0007,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."
+heat,extreme,50,25,100,E-0006|E-0007,low,"General rule v1 (heuristic), derived for maize and applied to all crops. See the deep-dive log."

@@ -1,0 +1,8 @@
+parameter,value,unit,evidence_ids,note
+ky,1.25,yield response factor,E-0001,FAO seasonal yield response factor for maize. Drought loss = ky x (1 - season rainfall as a fraction of the requirement).
+drought_zero_yield_at,0.6,fraction of the requirement,E-0005,Upper bound of the drought loss: yield falls in a straight line from the requirement to zero at this fraction of it.
+heat_season_months,4,months,E-0007,Season length over which hot days are counted. An assumption of this project.
+heat_dd_per_hot_day_central,0.5,degree days above 30 C per hot day,E-0007,"An assumption of this project, not from a source. To be replaced by degree days computed from daily temperature."
+heat_dd_per_hot_day_low,0.3,degree days above 30 C per hot day,E-0007,As above; used for the lower bound.
+heat_dd_per_hot_day_high,1.0,degree days above 30 C per hot day,E-0007,As above; used for the upper bound.
+heat_loss_pct_per_dd,1,percent yield loss per degree day above 30 C,E-0006,"Lobell et al. 2011, optimal rain-fed conditions (1.7 under drought)."

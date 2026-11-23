@@ -1,0 +1,38 @@
+commodity,kind,commodity_group,name
+general,general,,
+rice,group,rice,Rice
+cereal,group,cereal,Cereals other than rice
+legume,group,legume,"Pulses, soybean, groundnut"
+root_tuber,group,root_tuber,Roots and tubers
+oilseed,group,oilseed,Oilseeds
+sugar_crop,group,sugar_crop,Sugar crops
+fibre,group,fibre,Fibre crops
+vegetable,group,vegetable,Vegetables
+fruit,group,fruit,"Fruit, banana and plantain"
+perennial_tree_crop,group,perennial_tree_crop,"Coffee, cocoa, tea, oil palm, coconut, rubber"
+other_crop,group,other_crop,Other crops
+cattle,group,cattle,Cattle
+sheep_goats,group,sheep_goats,Sheep and goats
+camels,group,camels,Camels
+maize,crop,cereal,maize
+sorghum,crop,cereal,sorghum
+pearl_millet,crop,cereal,pearl millet
+wheat,crop,cereal,wheat
+rice,crop,rice,rice
+common_bean,crop,legume,common bean
+cowpea,crop,legume,cowpea
+groundnut,crop,legume,groundnut
+soybean,crop,legume,soybean
+pigeon_pea,crop,legume,pigeon pea
+bambara_groundnut,crop,legume,bambara groundnut
+cassava,crop,root_tuber,cassava
+potato,crop,root_tuber,potato
+sweet_potato,crop,root_tuber,sweet potato
+yam,crop,root_tuber,yam
+taro,crop,root_tuber,taro
+banana,crop,fruit,banana
+sesame,crop,oilseed,sesame
+sunflower,crop,oilseed,sunflower
+coffee,crop,perennial_tree_crop,coffee
+cocoa,crop,perennial_tree_crop,cocoa
+tea,crop,perennial_tree_crop,tea

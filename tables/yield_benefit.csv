@@ -1,0 +1,8 @@
+practice_id,commodity,yield_change_pct,low_pct,high_pct,evidence_ids,confidence,note
+C2.2,general,3.7,,,E-0101,medium,First pass from published meta-analysis; all-season average unless stated. Conservation agriculture as a whole.
+C2.2,maize,4.0,,8.4,E-0102,medium,First pass from published meta-analysis; all-season average unless stated. Upper value is with all conservation agriculture principles combined.
+C2.3,general,25,,,E-0113,medium,"First pass from published meta-analysis; all-season average unless stated. Tropics, not Africa-specific; larger on acid soils."
+C1.1,rice,0,-5.4,0,E-0114,medium,Moderate AWD taken as mild: no significant yield change. Lower value is the average over all AWD including severe drying.
+C3.3,cocoa,-25,,,E-0115,medium,First pass from published meta-analysis; all-season average unless stated. Cocoa yield only; total system yield is higher.
+G1.1,cattle,39,,,E-0117,medium,Milk yield with improved legume feeding against basal diets. Largely on-station.
+C4.1,general,33,,,E-0121,low,Brazil; about 80 % pot and greenhouse trials. Treat as an upper indication.
