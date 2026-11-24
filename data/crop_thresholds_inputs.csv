@@ -1,19 +1,19 @@
-commodity,ccw_rain_low_mm,ccw_rain_high_mm,ccw_rain_withstand_mm,ccw_rain_basis,ccw_temp_opt_low_c,ccw_temp_opt_high_c,ccw_pages,ecocrop_species,ecocrop_rain_abs_min_mm,ecocrop_rain_opt_min_mm,ecocrop_rain_opt_max_mm,ecocrop_temp_opt_max_c,ecocrop_temp_abs_max_c,preferred,note
-maize,500,1200,300,cycle,18,32,8-10,Zea mays,400,600,1200,33,47,concern,Concern: short-season varieties withstand 300 mm.
-sorghum,400,900,,cycle,23,31,16-18,Sorghum bicolor,300,400,600,35,40,concern,Concern: lethal maximum at flowering 37 C.
-pearl_millet,250,700,,cycle,25,30,12-14,Pennisetum glaucum,200,400,900,35,40,concern,Concern: 30-35 C reported optimal in West Africa.
-rice,800,1000,,cycle,24,30,19-24,Oryza sativa,1000,1500,2000,30,36,concern,Concern figure is for upland rice; paddy 1000-1500 mm or more. Day temperature range.
-common_bean,400,500,,cycle,21,26,25-28,Phaseolus vulgaris,300,500,2000,25,32,concern,Concern: rain above 1500 mm is detrimental.
-cowpea,,,,,24,31.5,29-32,Vigna unguiculata,300,500,1500,35,40,ecocrop,"Concern rainfall is printed as '300-50mm' (error in the document); yields fall above 900 mm. EcoCrop used for rainfall, Concern for temperature."
-groundnut,400,1200,,cycle,24,30,33-36,Arachis hypogaea,400,600,1500,32,45,concern,Concern: over 1100 mm reduces yields.
-pigeon_pea,500,1000,,cycle,22,26,37-39,Cajanus cajan,400,600,1500,38,45,concern,Concern temperature range is for flowering.
-soybean,350,1100,,cycle,18,29,40-43,Glycine max,450,600,1500,33,38,concern,
-bambara_groundnut,600,750,,year,21,25,44-46,Vigna subterranea,300,750,1400,30,38,concern,Concern prints '600-750mmf rainfall per year'; best yields at 900-1200 mm. Temperature range is for pod development.
-cassava,500,5000,,year,22,33,47-50,Manihot esculenta,500,1000,1500,29,35,concern,"Concern optimum is printed as '1,400-1,80mm' (error in the document)."
-potato,,,,,15.5,19,51-53,Solanum tuberosum,250,500,800,25,30,ecocrop,Concern gives no total rainfall. Temperature range is for tuber formation (day).
-sweet_potato,550,1270,,cycle,21,30,54-56,Ipomoea batatas,350,750,2000,28,38,concern,
-yam,1000,1500,,year,20,33,57-59,,,,,,,concern,EcoCrop lists several Dioscorea species; none chosen.
-taro,2000,,,year,21,27,60-61,Colocasia esculenta,1000,1800,2700,28,35,concern,Concern gives a single figure: 2000 mm a year.
-banana,1300,3600,,year,28,30,62-65,,,,,,,concern,Day temperature range. EcoCrop lists several Musa species; none chosen.
-sesame,400,500,,cycle,24,27,66-68,Sesamum indicum,300,500,1000,30,40,concern,Temperature is the annual average range; 26-30 C at flowering. Above 40 C causes flower sterility.
-sunflower,250,4000,,cycle,18,26,69-71,Helianthus annuus,300,600,1000,34,45,concern,Concern's upper figure of 4000 mm is implausible as a requirement; treat with caution.
+commodity,ccw_rain_low_mm,ccw_rain_high_mm,ccw_rain_withstand_mm,ccw_rain_basis,ccw_temp_opt_low_c,ccw_temp_opt_high_c,ccw_pages,ecocrop_species,ecocrop_rain_abs_min_mm,ecocrop_rain_opt_min_mm,ecocrop_rain_opt_max_mm,ecocrop_temp_opt_max_c,ecocrop_temp_abs_max_c,heat_moderate_c,heat_severe_c,heat_extreme_c,preferred,note
+maize,500,1200,300,cycle,18,32,8-10,Zea mays,400,600,1200,33,47,30,33,36,concern,Concern: short-season varieties withstand 300 mm.
+sorghum,400,900,,cycle,23,31,16-18,Sorghum bicolor,300,400,600,35,40,28,32.5,37,concern,Concern: lethal maximum at flowering 37 C.
+pearl_millet,250,700,,cycle,25,30,12-14,Pennisetum glaucum,200,400,900,35,40,29,36,43,concern,Concern: 30-35 C reported optimal in West Africa.
+rice,800,1000,,cycle,24,30,19-24,Oryza sativa,1000,1500,2000,30,36,26,28,30,concern,Concern figure is for upland rice; paddy 1000-1500 mm or more. Day temperature range.
+common_bean,400,500,,cycle,21,26,25-28,Phaseolus vulgaris,300,500,2000,25,32,26,29.3,32.6,concern,Concern: rain above 1500 mm is detrimental.
+cowpea,,,,,24,31.5,29-32,Vigna unguiculata,300,500,1500,35,40,28,31.5,35,ecocrop,"Concern rainfall is printed as '300-50mm' (error in the document); yields fall above 900 mm. EcoCrop used for rainfall, Concern for temperature."
+groundnut,400,1200,,cycle,24,30,33-36,Arachis hypogaea,400,600,1500,32,45,30,36.5,43,concern,Concern: over 1100 mm reduces yields.
+pigeon_pea,500,1000,,cycle,22,26,37-39,Cajanus cajan,400,600,1500,38,45,26,33,40,concern,Concern temperature range is for flowering.
+soybean,350,1100,,cycle,18,29,40-43,Glycine max,450,600,1500,33,38,28,34,40,concern,
+bambara_groundnut,600,750,,year,21,25,44-46,Vigna subterranea,300,750,1400,30,38,25,28.5,32,concern,Concern prints '600-750mmf rainfall per year'; best yields at 900-1200 mm. Temperature range is for pod development.
+cassava,500,5000,,year,22,33,47-50,Manihot esculenta,500,1000,1500,29,35,27,,,concern,"Concern optimum is printed as '1,400-1,80mm' (error in the document)."
+potato,,,,,15.5,19,51-53,Solanum tuberosum,250,500,800,25,30,27,32,37,ecocrop,Concern gives no total rainfall. Temperature range is for tuber formation (day).
+sweet_potato,550,1270,,cycle,21,30,54-56,Ipomoea batatas,350,750,2000,28,38,28,,,concern,
+yam,1000,1500,,year,20,33,57-59,,,,,,,28,30.25,32.5,concern,EcoCrop lists several Dioscorea species; none chosen.
+taro,2000,,,year,21,27,60-61,Colocasia esculenta,1000,1800,2700,28,35,,,,concern,Concern gives a single figure: 2000 mm a year.
+banana,1300,3600,,year,28,30,62-65,,,,,,,,,,concern,Day temperature range. EcoCrop lists several Musa species; none chosen.
+sesame,400,500,,cycle,24,27,66-68,Sesamum indicum,300,500,1000,30,40,,,,concern,Temperature is the annual average range; 26-30 C at flowering. Above 40 C causes flower sterility.
+sunflower,250,4000,,cycle,18,26,69-71,Helianthus annuus,300,600,1000,34,45,25,,,concern,Concern's upper figure of 4000 mm is implausible as a requirement; treat with caution.

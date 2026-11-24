@@ -8,7 +8,7 @@ These tables are a **work in progress**. Nothing here is a final or reviewed est
 
 | Table | What the values are |
 |---|---|
-| `hazard_loss` | A **referenced general rule** (heuristic, low confidence), derived for maize and applied to all crops. The heat rule rests on an assumed conversion from hot days to degree days that is not from a source. See `docs/hazard_loss_rule.md`. |
+| `hazard_loss` | A **referenced general rule** (heuristic, low confidence), derived for maize and applied to all crops. Heat degree days per level are interim, from the Kenya cube with an assumed daily temperature range, until the hazard pipeline counts them. See `docs/hazard_loss_rule.md` and `docs/decisions/0001-stress-tiers-and-heat-loss.md`. |
 | `yield_benefit` | A **first pass** from published meta-analyses, read from **abstracts only**. The full texts have not yet been read. |
 | `hazard_mitigation` | **Unconfirmed drafts.** The sources give the direction of the effect only; each level is a judgement awaiting review. The percentage each level converts to is also a proposal. |
 | `applicability` | A first judgement, not reviewed. |
@@ -38,7 +38,7 @@ Four core tables are what the modelling reads. The evidence register and source 
 | `applicability.csv` | practice × commodity group | practice_id, commodity_group, applies, note |
 | `evidence_register.csv` | one finding from one source | evidence_id, source_id, supports, practice_id, commodity, hazard, stress_level, finding, value, value_low, value_high, unit, evidence_type, region, season_basis, n_studies, locator, note |
 | `sources.csv` | one publication or dataset | source_id, citation, doi_or_url, year, file |
-| `crop_thresholds.csv` | one crop | Rainfall requirement and optimal temperature from Concern Worldwide (preferred, as it is written for Africa), with EcoCrop beside it, and the stress thresholds derived from them |
+| `crop_thresholds.csv` | one crop | Rainfall requirement and optimal temperature from Concern Worldwide (preferred, as it is written for Africa), with EcoCrop beside it, the drought thresholds derived from them, and the heat thresholds of the hazard pipeline (`cc4a-hazards`) |
 | `deep_dive_log.csv` | one crop, animal or group | Where the general rule should later be replaced, and why |
 
 Supporting files: `data_dictionary.csv` (every field: type, required, allowed values, meaning), `definitions.csv` (every level of every ordinal or categorical variable), `commodities.csv` (allowed commodity values), `practices_in_scope.csv` (the 12 in-scope practices, from the CC4A practice register).
@@ -59,15 +59,15 @@ Full definitions are in `tables/definitions.csv`.
 
 **Mitigation potential**: how much of the hazard's yield loss the practice prevents. none 0 %, low 25 %, medium 50 %, high 75 %, total 100 %. The percentages are a proposal, not yet confirmed. The scale has no level for a practice that makes the loss worse; record `none` and say so in the note.
 
-**Stress level**, from the Concern Worldwide crop requirements (per crop in `crop_thresholds.csv`):
+**Stress level**, shared with the hazard pipeline `cc4a-hazards` (decision `docs/decisions/0001-stress-tiers-and-heat-loss.md`; thresholds per crop in `crop_thresholds.csv`):
 
-| Level | Drought (season rainfall) | Heat (days per month above the top of the crop's optimal range; maize 32 °C) |
+| Level | Drought (season rainfall against the Concern Worldwide requirement) | Heat (daily maximum in the crop's heat window above; maize) |
 |---|---|---|
-| moderate | below the crop's requirement (maize < 500 mm) | more than 7 |
-| severe | below 80 % of the requirement (maize < 400 mm) | more than 14 |
-| extreme | below 60 % of the requirement (maize < 300 mm) | more than 21 |
+| moderate | below the crop's requirement (maize < 500 mm) | the lowest optimum upper end among the window's stages (30 °C) |
+| severe | below 80 % of the requirement (maize < 400 mm) | the midpoint of moderate and extreme (33 °C) |
+| extreme | below 60 % of the requirement (maize < 300 mm) | the lowest ceiling among the window's stages (36 °C) |
 
-The 80 % and 60 % fractions come from maize and are applied to other crops as a rule. Five crops have only per-year rainfall figures and no drought thresholds yet (Bambara groundnut, cassava, yam, taro, banana).
+Heat thresholds and windows are the pipeline's decisions 0006 and 0007; how many days above a threshold make a season count is still open there. The 80 % and 60 % fractions come from maize and are applied to other crops as a rule. Five crops have only per-year rainfall figures and no drought thresholds yet (Bambara groundnut, cassava, yam, taro, banana).
 
 **Confidence**: low (single studies, evidence from outside Africa only, expert judgement, or reasoning from the mechanism); medium (a meta-analysis or synthesis with few African studies, or sources that agree on direction but not size); high (at least one meta-analysis or synthesis with substantial African data, and sources agree on direction and rough size).
 
@@ -77,7 +77,7 @@ The 80 % and 60 % fractions come from maize and are applied to other crops as a 
 - Yield benefit from meta-analyses is an all-season average (`season_basis` in the register). Whether that is accepted as the normal-year yield benefit is undecided.
 - Livestock: no production-system framework and no livestock hazard loss defined yet.
 - Rice: whether non-rice practices apply to rice is marked conditional, to review.
-- Heat rule: to be recomputed from degree days above 30 °C.
+- Heat loss: degree days per level are interim (Kenya cube, assumed 12 °C daily range) until the pipeline reads daily minimum temperature; Lobell et al. 2011's degree-day method not yet checked.
 - Climate stratification (aridity classes or an agro-ecological zone layer), if any: not in the tables.
 
 ## Licence

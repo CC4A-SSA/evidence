@@ -68,7 +68,9 @@ crop_thresholds,requirement_mm,number,no,,"Season rainfall requirement used for 
 crop_thresholds,drought_moderate_mm,number,no,,Moderate drought: season rainfall below this (100 % of the requirement).
 crop_thresholds,drought_severe_mm,number,no,,Severe drought: below this (80 % of the requirement).
 crop_thresholds,drought_extreme_mm,number,no,,Extreme drought: below this (60 % of the requirement).
-crop_thresholds,heat_threshold_c,number,no,,Heat: a hot day is one with maximum temperature above this (top of the Concern optimal range).
+crop_thresholds,heat_moderate_c,number,no,,"Heat, moderate: daily maximum temperature above this in the crop's heat window. The lowest optimum upper end among the window's stages, from cc4a-hazards window_thresholds (decisions 0006 and 0007; commit 1ea2030). Also the base for heat degree days. Empty where the pipeline has no profile."
+crop_thresholds,heat_severe_c,number,no,,"Heat, severe: midpoint between the moderate and extreme thresholds (cc4a-hazards). Empty where the crop has no ceiling."
+crop_thresholds,heat_extreme_c,number,no,,"Heat, extreme: the lowest ceiling among the window's stages (cc4a-hazards). Empty where the crop has no ceiling."
 crop_thresholds,preferred,text,yes,concern | ecocrop,"Which source to use: concern (tailored to Africa, preferred) or ecocrop where Concern gives no usable value."
 crop_thresholds,note,text,no,,"Caveats, including figures printed with an error in the Concern document."
 deep_dive_log,item,text,yes,,"Crop, animal or group the general rule should be replaced for."

@@ -4,17 +4,17 @@ mitigation_potential,low,1,25 %,The practice prevents a small part of the loss: 
 mitigation_potential,medium,2,50 %,The practice prevents around half of the loss.
 mitigation_potential,high,3,75 %,The practice prevents most of the loss: about three quarters.
 mitigation_potential,total,4,100 %,The practice prevents the loss entirely: yield under the hazard is the same as in a normal season.
-stress_level,moderate,1,,"Drought: season rainfall below the crop's requirement, taken as the lower end of the Concern Worldwide range (maize: under 500 mm). Heat: more than 7 days per month above the top of the crop's optimal temperature range (Concern; maize 32 C)."
-stress_level,severe,2,,Drought: season rainfall below 80 % of the requirement (maize: under 400 mm). Heat: more than 14 such days per month.
-stress_level,extreme,3,,"Drought: season rainfall below 60 % of the requirement (maize: under 300 mm, the least Concern says short-season maize withstands). Heat: more than 21 such days per month."
+stress_level,moderate,1,,"Drought: season rainfall below the crop's requirement, taken as the lower end of the Concern Worldwide range (maize: under 500 mm). Heat: daily maximum temperature in the crop's heat window above its moderate threshold, the lowest optimum upper end among the window's stages (maize 30 C). Thresholds and windows are cc4a-hazards decisions 0006 and 0007; how many days make a season count is that pipeline's open point."
+stress_level,severe,2,,Drought: season rainfall below 80 % of the requirement (maize: under 400 mm). Heat: daily maximum in the heat window above the midpoint between the moderate and extreme thresholds (maize 33 C).
+stress_level,extreme,3,,"Drought: season rainfall below 60 % of the requirement (maize: under 300 mm, the least Concern says short-season maize withstands). Heat: daily maximum in the heat window above the lowest ceiling among the window's stages (maize 36 C)."
 confidence,low,1,,"Rests on single studies, on evidence from outside Africa only, on expert judgement, or on reasoning from the mechanism."
 confidence,medium,2,,"A meta-analysis or synthesis exists but with few African studies, or the sources disagree on the size of the effect while agreeing on its direction."
 confidence,high,3,,"At least one meta-analysis or synthesis with substantial African data, and the sources agree on direction and rough size."
 applies,yes,,,The practice can be used with this commodity group.
 applies,conditional,,,"Only under a condition stated in the note (for example, only where a cover crop fits in the season)."
 applies,no,,,The practice is not relevant to this commodity group. Nothing is computed for the pair.
-hazard,drought,,,Too little rainfall for the crop over its growing season (Atlas crop-specific index PTOT-L).
-hazard,heat,,,Too many hot days for the crop over its growing season (Atlas crop-specific index NTxM).
+hazard,drought,,,"Too little rainfall for the crop over its growing season: the season total against the crop's requirement, over the season window of cc4a-hazards (decision 0004)."
+hazard,heat,,,"Days too hot for the crop in its heat window: flowering to the end of seed filling for seed crops, the whole season for roots and tubers (cc4a-hazards decision 0007)."
 evidence_type,meta_analysis,,,A published quantitative meta-analysis. First choice.
 evidence_type,synthesis,,,"A systematic or narrative review, or a synthesis database such as ERA or Rural Scan."
 evidence_type,primary_study,,,A single trial or survey. Used where no meta-analysis or synthesis covers the case.

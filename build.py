@@ -7,7 +7,8 @@
 Everything a person edits is a CSV file in data/. This script only copies, derives and checks:
   - copies the hand-edited tables from data/ to tables/
   - derives hazard_loss from data/hazard_loss_rule.csv and data/rule_parameters.csv
-  - derives the stress thresholds in crop_thresholds from data/crop_thresholds_inputs.csv
+  - derives the drought thresholds in crop_thresholds from data/crop_thresholds_inputs.csv
+    (heat thresholds are copied from there; they come from cc4a-hazards)
   - writes data_dictionary.csv with the allowed values spelt out
   - checks every table in tables/ against the dictionary and a few consistency rules
 Standard library only.
@@ -57,7 +58,8 @@ def hazard_loss(bands, params):
     """One loss per hazard and stress level. Formulas are documented in docs/hazard_loss_rule.md."""
     p = {r["parameter"]: float(r["value"]) for r in params}
     ky, zero = p["ky"], p["drought_zero_yield_at"]
-    months, lpdd = p["heat_season_months"], p["heat_loss_pct_per_dd"]
+    lpdd, lpdd_dry = p["heat_loss_pct_per_dd"], p["heat_loss_pct_per_dd_drought"]
+    cap_central, cap_low = p["heat_loss_cap_central_pct"], p["heat_loss_cap_low_pct"]
     rows = []
     for b in bands:
         lo, hi, at = float(b["band_low"]), float(b["band_high"]), float(b["central_at"])
@@ -66,10 +68,10 @@ def hazard_loss(bands, params):
             low = ky * (1 - hi) * 100
             mid = (lo + hi) / 2
             high = min(100, (1 - (mid - zero) / (1 - zero)) * 100) if lo >= zero else 100
-        elif b["hazard"] == "heat":     # bands are hot days per month
-            central = at * months * p["heat_dd_per_hot_day_central"] * lpdd
-            low = lo * months * p["heat_dd_per_hot_day_low"] * lpdd
-            high = min(100, hi * months * p["heat_dd_per_hot_day_high"] * lpdd)
+        elif b["hazard"] == "heat":     # bands are degree days in seasons at this level: p25, p75, median
+            central = min(cap_central, at * lpdd)
+            low = min(cap_low, lo * lpdd)
+            high = min(100, hi * lpdd_dry)
         else:
             raise SystemExit(f"hazard_loss_rule: unknown hazard {b['hazard']!r}")
         rows.append([b["hazard"], b["stress_level"], round(central), round(low), round(high),
@@ -79,10 +81,13 @@ def hazard_loss(bands, params):
 
 def crop_thresholds(inputs, bands):
     """Requirement = Concern lower figure (per cycle) or EcoCrop optimum minimum; drought levels are
-    the drought band tops (1.0, 0.8, 0.6) times the requirement; heat = top of Concern optimal range."""
+    the drought band tops (1.0, 0.8, 0.6) times the requirement. Heat thresholds are copied from the
+    inputs (cc4a-hazards window_thresholds)."""
     fr = {b["stress_level"]: float(b["band_high"]) for b in bands if b["hazard"] == "drought"}
+    heat = ["heat_moderate_c", "heat_severe_c", "heat_extreme_c"]
     out = []
     for r in inputs:
+        base = [r[k] for k in r if k not in heat + ["preferred", "note"]]
         if r["preferred"] == "concern" and r["ccw_rain_basis"] == "cycle" and r["ccw_rain_low_mm"] != "":
             req = r["ccw_rain_low_mm"]
         elif r["preferred"] == "ecocrop":
@@ -90,7 +95,7 @@ def crop_thresholds(inputs, bands):
         else:
             req = ""
         lev = [req if fr[s] == 1 else round(float(req) * fr[s]) for s in ("moderate", "severe", "extreme")] if req else ["", "", ""]
-        out.append([r[k] for k in list(r)[:-2]] + [req, *lev, r["ccw_temp_opt_high_c"], r["preferred"], r["note"]])
+        out.append(base + [req, *lev] + [r[k] for k in heat] + [r["preferred"], r["note"]])
     return out
 
 
