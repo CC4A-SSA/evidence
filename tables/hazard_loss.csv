@@ -5,3 +5,222 @@ general,drought,extreme,0.6,0.5,0.3,62,50,100,E-0001|E-0005|E-0003,low,"General 
 general,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,"General rule v2.1 (heuristic, decision 0001, amended 24 Nov 2026): Lobell log-yield degree-day response, derived for maize and applied to all crops. Degree days are interim, from the Kenya cube with an assumed 12 C daily range. See the deep-dive log."
 general,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,"General rule v2.1 (heuristic, decision 0001, amended 24 Nov 2026): Lobell log-yield degree-day response, derived for maize and applied to all crops. Degree days are interim, from the Kenya cube with an assumed 12 C daily range. See the deep-dive log."
 general,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,"General rule v2.1 (heuristic, decision 0001, amended 24 Nov 2026): Lobell log-yield degree-day response, derived for maize and applied to all crops. Degree days are interim, from the Kenya cube with an assumed 12 C daily range. See the deep-dive log. Cross-check: the silking-heat experiment gives 52-75 % kernel loss (E-0124)."
+banana,drought,moderate,1,0.9,0.9,12,0,13,E-0527|E-0528|E-0001|E-0003|E-0005,low,Over the 12 months before harvest; van Asten 2011: -8 to -10 % bunch weight per 100 mm.
+banana,drought,severe,0.8,0.7,0.7,36,24,41,E-0527|E-0528|E-0001|E-0003|E-0005,low,Over the 12 months before harvest; van Asten 2011: -8 to -10 % bunch weight per 100 mm.
+banana,drought,extreme,0.6,0.5,0.3,60,48,94,E-0527|E-0528|E-0001|E-0003|E-0005,low,Over the 12 months before harvest; van Asten 2011: -8 to -10 % bunch weight per 100 mm.
+barley,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+barley,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+barley,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+barley,drought,moderate,1,0.9,0.9,10,0,11,E-0502|E-0001|E-0003|E-0005,low,FAO 66: barley like wheat but more tolerant.
+barley,drought,severe,0.8,0.7,0.7,32,20,34,E-0502|E-0001|E-0003|E-0005,low,FAO 66: barley like wheat but more tolerant.
+barley,drought,extreme,0.6,0.5,0.3,52,40,80,E-0502|E-0001|E-0003|E-0005,low,FAO 66: barley like wheat but more tolerant.
+common_bean,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Heat-sensitive at flowering.
+common_bean,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Heat-sensitive at flowering.
+common_bean,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Heat-sensitive at flowering.
+common_bean,drought,moderate,1,0.9,0.9,11,0,11,E-0507|E-0001|E-0003|E-0005,low,
+common_bean,drought,severe,0.8,0.7,0.7,34,23,34,E-0507|E-0001|E-0003|E-0005,low,
+common_bean,drought,extreme,0.6,0.5,0.3,57,46,80,E-0507|E-0001|E-0003|E-0005,low,
+cassava,heat,moderate,5.1,8.6,13.3,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123,low,"No heat loss at African temperatures: Blanc 2012 not significant, Schlenker and Lobell 2010 positive. Heat x drought interaction to consider."
+cassava,heat,severe,21.4,42.1,62.3,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123,low,"No heat loss at African temperatures: Blanc 2012 not significant, Schlenker and Lobell 2010 positive. Heat x drought interaction to consider."
+cassava,heat,extreme,70.1,100.9,180,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,"No heat loss at African temperatures: Blanc 2012 not significant, Schlenker and Lobell 2010 positive. Heat x drought interaction to consider."
+cassava,drought,moderate,1,0.9,0.9,12,0,12,E-0519|E-0001|E-0003|E-0005,low,No cassava ky; drought hits 1-5 months after planting.
+cassava,drought,severe,0.8,0.7,0.7,36,24,36,E-0519|E-0001|E-0003|E-0005,low,No cassava ky; drought hits 1-5 months after planting.
+cassava,drought,extreme,0.6,0.5,0.3,60,48,84,E-0519|E-0001|E-0003|E-0005,low,No cassava ky; drought hits 1-5 months after planting.
+chickpea,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Chickpea 10-15 % per C above optimum (F-0062) as a cross-check.
+chickpea,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Chickpea 10-15 % per C above optimum (F-0062) as a cross-check.
+chickpea,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Chickpea 10-15 % per C above optimum (F-0062) as a cross-check.
+chickpea,drought,moderate,1,0.9,0.9,11,0,11,E-0507|E-0001|E-0003|E-0005,low,FAO 66 Table 1 pea 1.15; cool-season pulse.
+chickpea,drought,severe,0.8,0.7,0.7,34,23,34,E-0507|E-0001|E-0003|E-0005,low,FAO 66 Table 1 pea 1.15; cool-season pulse.
+chickpea,drought,extreme,0.6,0.5,0.3,57,46,80,E-0507|E-0001|E-0003|E-0005,low,FAO 66 Table 1 pea 1.15; cool-season pulse.
+citrus,drought,moderate,1,0.9,0.9,9,0,11,E-0530|E-0001|E-0003|E-0005,low,
+citrus,drought,severe,0.8,0.7,0.7,29,16,33,E-0530|E-0001|E-0003|E-0005,low,
+citrus,drought,extreme,0.6,0.5,0.3,48,32,77,E-0530|E-0001|E-0003|E-0005,low,
+cotton,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Mali: no heat damage up to seasonal mean Tmax 35.6 C (Blanc 2008); deep dive.
+cotton,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Mali: no heat damage up to seasonal mean Tmax 35.6 C (Blanc 2008); deep dive.
+cotton,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Mali: no heat damage up to seasonal mean Tmax 35.6 C (Blanc 2008); deep dive.
+cotton,drought,moderate,1,0.9,0.9,8,0,8,E-0524|E-0523|E-0001|E-0003|E-0005,low,
+cotton,drought,severe,0.8,0.7,0.7,26,17,26,E-0524|E-0523|E-0001|E-0003|E-0005,low,
+cotton,drought,extreme,0.6,0.5,0.3,42,34,60,E-0524|E-0523|E-0001|E-0003|E-0005,low,
+cowpea,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+cowpea,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+cowpea,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+cowpea,drought,moderate,1,0.9,0.9,12,0,12,E-0508|E-0001|E-0003|E-0005,low,Nigeria field trial (Faloye and Alatise 2017).
+cowpea,drought,severe,0.8,0.7,0.7,37,25,37,E-0508|E-0001|E-0003|E-0005,low,Nigeria field trial (Faloye and Alatise 2017).
+cowpea,drought,extreme,0.6,0.5,0.3,62,50,87,E-0508|E-0001|E-0003|E-0005,low,Nigeria field trial (Faloye and Alatise 2017).
+groundnut,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Schlenker and Lobell 2010 low-input slope F-0004.
+groundnut,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Schlenker and Lobell 2010 low-input slope F-0004.
+groundnut,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Schlenker and Lobell 2010 low-input slope F-0004.
+groundnut,drought,moderate,1,0.9,0.9,7,0,7,E-0510|E-0001|E-0003|E-0005,low,
+groundnut,drought,severe,0.8,0.7,0.7,21,14,21,E-0510|E-0001|E-0003|E-0005,low,
+groundnut,drought,extreme,0.6,0.5,0.3,35,28,49,E-0510|E-0001|E-0003|E-0005,low,
+lentil,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+lentil,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+lentil,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+lentil,drought,moderate,1,0.9,0.9,11,0,11,E-0001|E-0003|E-0005,low,FAO 66 Table 1 pea 1.15.
+lentil,drought,severe,0.8,0.7,0.7,34,23,34,E-0001|E-0003|E-0005,low,FAO 66 Table 1 pea 1.15.
+lentil,drought,extreme,0.6,0.5,0.3,57,46,80,E-0001|E-0003|E-0005,low,FAO 66 Table 1 pea 1.15.
+maize,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,"Lobell et al. 2011, African trials; 1.7 under drought."
+maize,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,"Lobell et al. 2011, African trials; 1.7 under drought."
+maize,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,"Lobell et al. 2011, African trials; 1.7 under drought."
+maize,drought,moderate,1,0.9,0.9,12,0,13,E-0001|E-0501|E-0003|E-0005,low,FAO 33 seasonal; IAEA 1.33 (FAO 66 Table 2).
+maize,drought,severe,0.8,0.7,0.7,38,25,40,E-0001|E-0501|E-0003|E-0005,low,FAO 33 seasonal; IAEA 1.33 (FAO 66 Table 2).
+maize,drought,extreme,0.6,0.5,0.3,62,50,93,E-0001|E-0501|E-0003|E-0005,low,FAO 33 seasonal; IAEA 1.33 (FAO 66 Table 2).
+small_millet,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,C4 cereal; finger millet in cooler highlands.
+small_millet,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,C4 cereal; finger millet in cooler highlands.
+small_millet,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,C4 cereal; finger millet in cooler highlands.
+small_millet,drought,moderate,1,0.9,0.9,9,0,9,E-0503|E-0504|E-0001|E-0003|E-0005,low,"No finger millet ky; sorghum, low = pearl millet."
+small_millet,drought,severe,0.8,0.7,0.7,27,14,27,E-0503|E-0504|E-0001|E-0003|E-0005,low,"No finger millet ky; sorghum, low = pearl millet."
+small_millet,drought,extreme,0.6,0.5,0.3,45,28,63,E-0503|E-0504|E-0001|E-0003|E-0005,low,"No finger millet ky; sorghum, low = pearl millet."
+other_cereals,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Teff is C4 but highland-grown; general rule at its own threshold.
+other_cereals,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Teff is C4 but highland-grown; general rule at its own threshold.
+other_cereals,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Teff is C4 but highland-grown; general rule at its own threshold.
+other_cereals,drought,moderate,1,0.9,0.9,10,0,12,E-0505|E-0506|E-0001|E-0003|E-0005,low,"Teff: 1.04 rainfed Tigray (Araya 2011); 1.09-1.19 deficit irrigation (Yihun 2013, one season)."
+other_cereals,drought,severe,0.8,0.7,0.7,31,21,36,E-0505|E-0506|E-0001|E-0003|E-0005,low,"Teff: 1.04 rainfed Tigray (Araya 2011); 1.09-1.19 deficit irrigation (Yihun 2013, one season)."
+other_cereals,drought,extreme,0.6,0.5,0.3,52,42,83,E-0505|E-0506|E-0001|E-0003|E-0005,low,"Teff: 1.04 rainfed Tigray (Araya 2011); 1.09-1.19 deficit irrigation (Yihun 2013, one season)."
+other_fibre_crops,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Sisal is CAM and heat tolerant.
+other_fibre_crops,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Sisal is CAM and heat tolerant.
+other_fibre_crops,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Sisal is CAM and heat tolerant.
+other_fibre_crops,drought,moderate,1,0.9,0.9,8,0,8,E-0524|E-0001|E-0003|E-0005,low,Jute like cotton; sisal low (0).
+other_fibre_crops,drought,severe,0.8,0.7,0.7,26,0,26,E-0524|E-0001|E-0003|E-0005,low,Jute like cotton; sisal low (0).
+other_fibre_crops,drought,extreme,0.6,0.5,0.3,42,0,60,E-0524|E-0001|E-0003|E-0005,low,Jute like cotton; sisal low (0).
+onion,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+onion,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+onion,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+onion,drought,moderate,1,0.9,0.9,11,0,11,E-0533|E-0001|E-0003|E-0005,low,
+onion,drought,severe,0.8,0.7,0.7,33,22,33,E-0533|E-0001|E-0003|E-0005,low,
+onion,drought,extreme,0.6,0.5,0.3,55,44,77,E-0533|E-0001|E-0003|E-0005,low,
+other_oil_crops,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+other_oil_crops,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+other_oil_crops,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+other_oil_crops,drought,moderate,1,0.9,0.9,8,0,9,E-0514|E-0001|E-0003|E-0005,low,
+other_oil_crops,drought,severe,0.8,0.7,0.7,24,16,29,E-0514|E-0001|E-0003|E-0005,low,
+other_oil_crops,drought,extreme,0.6,0.5,0.3,40,32,66,E-0514|E-0001|E-0003|E-0005,low,
+other_pulses,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+other_pulses,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+other_pulses,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+other_pulses,drought,moderate,1,0.9,0.9,12,0,12,E-0508|E-0510|E-0001|E-0003|E-0005,low,Mung bean and Bambara; low = groundnut 0.70 (Bambara).
+other_pulses,drought,severe,0.8,0.7,0.7,37,14,37,E-0508|E-0510|E-0001|E-0003|E-0005,low,Mung bean and Bambara; low = groundnut 0.70 (Bambara).
+other_pulses,drought,extreme,0.6,0.5,0.3,62,28,87,E-0508|E-0510|E-0001|E-0003|E-0005,low,Mung bean and Bambara; low = groundnut 0.70 (Bambara).
+other_roots,heat,moderate,5.1,8.6,13.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,"Taro, cocoyam."
+other_roots,heat,severe,21.4,42.1,62.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,"Taro, cocoyam."
+other_roots,heat,extreme,70.1,100.9,180,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,"Taro, cocoyam."
+other_roots,drought,moderate,1,0.9,0.9,12,0,12,E-0519|E-0001|E-0003|E-0005,low,"Low 0.3 from one taro rain-shelter trial (Mabhaudhi 2013, derived)."
+other_roots,drought,severe,0.8,0.7,0.7,36,6,36,E-0519|E-0001|E-0003|E-0005,low,"Low 0.3 from one taro rain-shelter trial (Mabhaudhi 2013, derived)."
+other_roots,drought,extreme,0.6,0.5,0.3,60,12,84,E-0519|E-0001|E-0003|E-0005,low,"Low 0.3 from one taro rain-shelter trial (Mabhaudhi 2013, derived)."
+pigeon_pea,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+pigeon_pea,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+pigeon_pea,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+pigeon_pea,drought,moderate,1,0.9,0.9,7,0,8,E-0510|E-0001|E-0003|E-0005,low,Deep-rooted; high = soybean 0.85.
+pigeon_pea,drought,severe,0.8,0.7,0.7,21,14,26,E-0510|E-0001|E-0003|E-0005,low,Deep-rooted; high = soybean 0.85.
+pigeon_pea,drought,extreme,0.6,0.5,0.3,35,28,60,E-0510|E-0001|E-0003|E-0005,low,Deep-rooted; high = soybean 0.85.
+plantain,drought,moderate,1,0.9,0.9,12,0,13,E-0527|E-0529|E-0001|E-0003|E-0005,low,
+plantain,drought,severe,0.8,0.7,0.7,36,24,41,E-0527|E-0529|E-0001|E-0003|E-0005,low,
+plantain,drought,extreme,0.6,0.5,0.3,60,48,94,E-0527|E-0529|E-0001|E-0003|E-0005,low,
+pearl_millet,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,C4 cereal; thresholds only for pearl millet heat (F-0043).
+pearl_millet,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,C4 cereal; thresholds only for pearl millet heat (F-0043).
+pearl_millet,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,C4 cereal; thresholds only for pearl millet heat (F-0043).
+pearl_millet,drought,moderate,1,0.9,0.9,7,0,9,E-0504|E-0001|E-0003|E-0005,low,"0.7 % relative yield per 1 % irrigation deficit (Mahalakshmi 1988, abstract); high = sorghum 0.9."
+pearl_millet,drought,severe,0.8,0.7,0.7,21,14,27,E-0504|E-0001|E-0003|E-0005,low,"0.7 % relative yield per 1 % irrigation deficit (Mahalakshmi 1988, abstract); high = sorghum 0.9."
+pearl_millet,drought,extreme,0.6,0.5,0.3,35,28,63,E-0504|E-0001|E-0003|E-0005,low,"0.7 % relative yield per 1 % irrigation deficit (Mahalakshmi 1988, abstract); high = sorghum 0.9."
+potato,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Swiss trials: -14.8 % per C of seasonal mean above 16.5 C (F-0119) as a cross-check.
+potato,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Swiss trials: -14.8 % per C of seasonal mean above 16.5 C (F-0119) as a cross-check.
+potato,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Swiss trials: -14.8 % per C of seasonal mean above 16.5 C (F-0119) as a cross-check.
+potato,drought,moderate,1,0.9,0.9,11,0,11,E-0517|E-0518|E-0001|E-0003|E-0005,low,FAO 33 1.1; FAO crop page 0.85.
+potato,drought,severe,0.8,0.7,0.7,33,17,33,E-0517|E-0518|E-0001|E-0003|E-0005,low,FAO 33 1.1; FAO crop page 0.85.
+potato,drought,extreme,0.6,0.5,0.3,55,34,77,E-0517|E-0518|E-0001|E-0003|E-0005,low,FAO 33 1.1; FAO crop page 0.85.
+rapeseed,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+rapeseed,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+rapeseed,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+rapeseed,drought,moderate,1,0.9,0.9,9,0,9,E-0512|E-0001|E-0003|E-0005,low,Pot trial (Bilibio 2011); high = sunflower.
+rapeseed,drought,severe,0.8,0.7,0.7,28,19,29,E-0512|E-0001|E-0003|E-0005,low,Pot trial (Bilibio 2011); high = sunflower.
+rapeseed,drought,extreme,0.6,0.5,0.3,46,37,66,E-0512|E-0001|E-0003|E-0005,low,Pot trial (Bilibio 2011); high = sunflower.
+rest_of_crops,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+rest_of_crops,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+rest_of_crops,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+rest_of_crops,drought,moderate,1,0.9,0.9,10,0,11,E-0534|E-0001|E-0003|E-0005,low,FAO 66 Table 1 central range.
+rest_of_crops,drought,severe,0.8,0.7,0.7,32,19,34,E-0534|E-0001|E-0003|E-0005,low,FAO 66 Table 1 central range.
+rest_of_crops,drought,extreme,0.6,0.5,0.3,52,38,80,E-0534|E-0001|E-0003|E-0005,low,FAO 66 Table 1 central range.
+rice,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,"Night temperature matters for rice (Peng 2004, F-0024); deep dive."
+rice,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,"Night temperature matters for rice (Peng 2004, F-0024); deep dive."
+rice,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,"Night temperature matters for rice (Peng 2004, F-0024); deep dive."
+rice,drought,moderate,1,0.9,0.9,12,0,12,E-0001|E-0003|E-0005,low,Upland and rainfed rice only; irrigated rice needs a water-supply metric (deep-dive log).
+rice,drought,severe,0.8,0.7,0.7,38,22,38,E-0001|E-0003|E-0005,low,Upland and rainfed rice only; irrigated rice needs a water-supply metric (deep-dive log).
+rice,drought,extreme,0.6,0.5,0.3,62,44,88,E-0001|E-0003|E-0005,low,Upland and rainfed rice only; irrigated rice needs a water-supply metric (deep-dive log).
+sesame,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+sesame,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+sesame,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+sesame,drought,moderate,1,0.9,0.9,8,0,8,E-0513|E-0001|E-0003|E-0005,low,Ethiopia field trial (Berhane 2023).
+sesame,drought,severe,0.8,0.7,0.7,25,17,25,E-0513|E-0001|E-0003|E-0005,low,Ethiopia field trial (Berhane 2023).
+sesame,drought,extreme,0.6,0.5,0.3,42,33,58,E-0513|E-0001|E-0003|E-0005,low,Ethiopia field trial (Berhane 2023).
+sorghum,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,C4 cereal; Schlenker and Lobell 2010 slopes for sorghum are close to maize in high-input countries (F-0007 vs F-0006).
+sorghum,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,C4 cereal; Schlenker and Lobell 2010 slopes for sorghum are close to maize in high-input countries (F-0007 vs F-0006).
+sorghum,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,C4 cereal; Schlenker and Lobell 2010 slopes for sorghum are close to maize in high-input countries (F-0007 vs F-0006).
+sorghum,drought,moderate,1,0.9,0.9,9,0,9,E-0503|E-0001|E-0003|E-0005,low,
+sorghum,drought,severe,0.8,0.7,0.7,27,18,27,E-0503|E-0001|E-0003|E-0005,low,
+sorghum,drought,extreme,0.6,0.5,0.3,45,36,63,E-0503|E-0001|E-0003|E-0005,low,
+soybean,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+soybean,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+soybean,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+soybean,drought,moderate,1,0.9,0.9,8,0,8,E-0509|E-0001|E-0003|E-0005,low,
+soybean,drought,severe,0.8,0.7,0.7,26,17,26,E-0509|E-0001|E-0003|E-0005,low,
+soybean,drought,extreme,0.6,0.5,0.3,42,34,60,E-0509|E-0001|E-0003|E-0005,low,
+sugar_beet,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+sugar_beet,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+sugar_beet,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+sugar_beet,drought,moderate,1,0.9,0.9,11,0,11,E-0522|E-0001|E-0003|E-0005,low,
+sugar_beet,drought,severe,0.8,0.7,0.7,33,20,33,E-0522|E-0001|E-0003|E-0005,low,
+sugar_beet,drought,extreme,0.6,0.5,0.3,55,40,77,E-0522|E-0001|E-0003|E-0005,low,
+sugarcane,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Crop model: yield peaks near +3 C (Jones 2018).
+sugarcane,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Crop model: yield peaks near +3 C (Jones 2018).
+sugarcane,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Crop model: yield peaks near +3 C (Jones 2018).
+sugarcane,drought,moderate,1,0.9,0.9,12,0,12,E-0520|E-0521|E-0001|E-0003|E-0005,low,FAO 1.2; Canegro rainfall elasticity about 0.9.
+sugarcane,drought,severe,0.8,0.7,0.7,36,18,36,E-0520|E-0521|E-0001|E-0003|E-0005,low,FAO 1.2; Canegro rainfall elasticity about 0.9.
+sugarcane,drought,extreme,0.6,0.5,0.3,60,36,84,E-0520|E-0521|E-0001|E-0003|E-0005,low,FAO 1.2; Canegro rainfall elasticity about 0.9.
+sunflower,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+sunflower,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+sunflower,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+sunflower,drought,moderate,1,0.9,0.9,9,0,9,E-0511|E-0001|E-0003|E-0005,low,
+sunflower,drought,severe,0.8,0.7,0.7,29,19,29,E-0511|E-0001|E-0003|E-0005,low,
+sunflower,drought,extreme,0.6,0.5,0.3,48,38,66,E-0511|E-0001|E-0003|E-0005,low,
+sweet_potato,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+sweet_potato,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+sweet_potato,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+sweet_potato,drought,moderate,1,0.9,0.9,12,0,12,E-0519|E-0001|E-0003|E-0005,low,Mozambique; single-harvest crops (Gomes and Carr 2003).
+sweet_potato,drought,severe,0.8,0.7,0.7,36,24,36,E-0519|E-0001|E-0003|E-0005,low,Mozambique; single-harvest crops (Gomes and Carr 2003).
+sweet_potato,drought,extreme,0.6,0.5,0.3,60,48,84,E-0519|E-0001|E-0003|E-0005,low,Mozambique; single-harvest crops (Gomes and Carr 2003).
+temperate_fruit,drought,moderate,1,0.9,0.9,8,0,8,E-0531|E-0001|E-0003|E-0005,low,
+temperate_fruit,drought,severe,0.8,0.7,0.7,26,17,26,E-0531|E-0001|E-0003|E-0005,low,
+temperate_fruit,drought,extreme,0.6,0.5,0.3,42,34,60,E-0531|E-0001|E-0003|E-0005,low,
+tobacco,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+tobacco,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+tobacco,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+tobacco,drought,moderate,1,0.9,0.9,9,0,9,E-0525|E-0001|E-0003|E-0005,low,
+tobacco,drought,severe,0.8,0.7,0.7,27,18,27,E-0525|E-0001|E-0003|E-0005,low,
+tobacco,drought,extreme,0.6,0.5,0.3,45,36,63,E-0525|E-0001|E-0003|E-0005,low,
+tomato,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+tomato,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+tomato,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+tomato,drought,moderate,1,0.9,0.9,10,0,10,E-0532|E-0001|E-0003|E-0005,low,
+tomato,drought,severe,0.8,0.7,0.7,32,21,32,E-0532|E-0001|E-0003|E-0005,low,
+tomato,drought,extreme,0.6,0.5,0.3,52,42,74,E-0532|E-0001|E-0003|E-0005,low,
+tropical_fruit,drought,moderate,1,0.9,0.9,9,0,11,E-0530|E-0001|E-0003|E-0005,low,"Mango, avocado; pineapple is CAM and tolerant."
+tropical_fruit,drought,severe,0.8,0.7,0.7,29,16,33,E-0530|E-0001|E-0003|E-0005,low,"Mango, avocado; pineapple is CAM and tolerant."
+tropical_fruit,drought,extreme,0.6,0.5,0.3,48,32,77,E-0530|E-0001|E-0003|E-0005,low,"Mango, avocado; pineapple is CAM and tolerant."
+vegetables,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,
+vegetables,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,
+vegetables,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,
+vegetables,drought,moderate,1,0.9,0.9,10,0,11,E-0534|E-0001|E-0003|E-0005,low,
+vegetables,drought,severe,0.8,0.7,0.7,32,19,34,E-0534|E-0001|E-0003|E-0005,low,
+vegetables,drought,extreme,0.6,0.5,0.3,52,38,80,E-0534|E-0001|E-0003|E-0005,low,
+wheat,heat,moderate,5.1,8.6,13.3,8,5,20,E-0006|E-0007|E-0122|E-0123,low,Wheat in South Africa: -12.5 % per extra 24 h above 30 C (F-0014) as a cross-check.
+wheat,heat,severe,21.4,42.1,62.3,34,19,65,E-0006|E-0007|E-0122|E-0123,low,Wheat in South Africa: -12.5 % per extra 24 h above 30 C (F-0014) as a cross-check.
+wheat,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,low,Wheat in South Africa: -12.5 % per extra 24 h above 30 C (F-0014) as a cross-check.
+wheat,drought,moderate,1,0.9,0.9,11,0,11,E-0502|E-0001|E-0003|E-0005,low,"Spring wheat 1.15, winter 1.05 (FAO 66 Table 1)."
+wheat,drought,severe,0.8,0.7,0.7,34,21,34,E-0502|E-0001|E-0003|E-0005,low,"Spring wheat 1.15, winter 1.05 (FAO 66 Table 1)."
+wheat,drought,extreme,0.6,0.5,0.3,57,42,80,E-0502|E-0001|E-0003|E-0005,low,"Spring wheat 1.15, winter 1.05 (FAO 66 Table 1)."
+yam,heat,moderate,5.1,8.6,13.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,Warm-adapted tuber.
+yam,heat,severe,21.4,42.1,62.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,Warm-adapted tuber.
+yam,heat,extreme,70.1,100.9,180,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,Warm-adapted tuber.
+yam,drought,moderate,1,0.9,0.9,12,0,12,E-0519|E-0001|E-0003|E-0005,low,
+yam,drought,severe,0.8,0.7,0.7,36,24,36,E-0519|E-0001|E-0003|E-0005,low,
+yam,drought,extreme,0.6,0.5,0.3,60,48,84,E-0519|E-0001|E-0003|E-0005,low,
