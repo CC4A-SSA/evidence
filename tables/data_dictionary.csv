@@ -29,7 +29,7 @@ applicability,applies,text,yes,yes | conditional | no,"yes, conditional or no."
 applicability,note,text,no,,"The condition, where applies = conditional."
 evidence_register,evidence_id,text,yes,,Identifier of the finding.
 evidence_register,source_id,text,yes,sources,Source the finding comes from.
-evidence_register,supports,text,yes,yield_benefit | hazard_mitigation | hazard_loss,"Which core table the finding feeds: yield_benefit, hazard_mitigation or hazard_loss."
+evidence_register,supports,text,yes,yield_benefit | hazard_mitigation | hazard_loss | applicability,"Which table the finding feeds: yield_benefit, hazard_mitigation, hazard_loss or applicability."
 evidence_register,practice_id,text,no,practice register ID,Practice. Empty for hazard_loss findings.
 evidence_register,commodity,text,yes,commodity list,"Crop, group or general, as reported by the source."
 evidence_register,hazard,text,no,drought | heat,"Hazard, for hazard_mitigation and hazard_loss findings."
@@ -41,10 +41,13 @@ evidence_register,value_high,number,no,,Upper bound reported.
 evidence_register,unit,text,no,,"What the value is, e.g. percent yield change, response ratio, percent yield loss."
 evidence_register,evidence_type,text,yes,meta_analysis | synthesis | primary_study | own_analysis | expert_judgement,"meta_analysis, synthesis, primary_study, own_analysis or expert_judgement."
 evidence_register,region,text,yes,sub_saharan_africa | africa | global,Where the evidence is from.
-evidence_register,season_basis,text,yes,all_seasons | normal_seasons | stress_seasons | not_stated,"Whether the source reports all seasons together, normal seasons or stress seasons."
+evidence_register,season_basis,text,yes,all_seasons | normal_seasons | stress_seasons | split_by_condition | not_stated,"Whether the source reports all seasons together, normal seasons or stress seasons."
 evidence_register,n_studies,number,no,,"Number of studies behind the finding, where reported."
 evidence_register,locator,text,no,,"Where in the source: page, table or figure. Expected for every published source; empty only for expert judgement and our own analysis."
 evidence_register,note,text,no,,Limitations or anything needed to interpret the finding.
+evidence_register,trial_id,text,no,,"Identifier of the physical trial, shared by every finding and stream that uses it, so a trial is counted once (review protocol 02 §2). Form TR-<site>-<first year>, for example TR-MONZE-2005."
+evidence_register,moderator,text,no,,"For applicability findings: the condition the effect depends on, named as in the review's moderators (aridity, soil, farming system, dose, years since establishment)."
+evidence_register,read_depth,text,no,full_text | abstract | secondary,How deeply the source was read for this finding.
 sources,source_id,text,yes,,Identifier of the source.
 sources,citation,text,yes,,Full citation.
 sources,doi_or_url,text,no,,DOI or URL.

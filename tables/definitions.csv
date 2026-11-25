@@ -23,12 +23,17 @@ evidence_type,expert_judgement,,,"A judgement by a named expert, with the reason
 supports,yield_benefit,,,The finding supports a row of the yield benefit table.
 supports,hazard_mitigation,,,The finding supports a row of the hazard mitigation table.
 supports,hazard_loss,,,The finding supports a row of the hazard loss table.
+supports,applicability,,,The finding describes where or under what conditions a practice's effect holds (supports the applicability table).
 season_basis,all_seasons,,,"The source averages over all seasons, good and bad together. Usual for meta-analyses."
 season_basis,normal_seasons,,,The source reports seasons without climate stress.
 season_basis,stress_seasons,,,The source reports seasons under the hazard.
+season_basis,split_by_condition,,,"The source reports the effect separately for normal and stressed seasons or conditions, as a contrast within one finding."
 season_basis,not_stated,,,The source does not say.
 region,sub_saharan_africa,,,Evidence from sub-Saharan Africa.
 region,africa,,,Evidence from Africa including North Africa.
 region,global,,,"Global evidence, or evidence from outside Africa."
 preferred_source,concern,,,Use the Concern Worldwide value.
 preferred_source,ecocrop,,,Use the EcoCrop value because Concern gives none that is usable.
+read_depth,full_text,,,"The finding was read from the full text, with a page, table or figure locator."
+read_depth,abstract,,,The finding was read from the abstract only. Re-read against the full text before use in a table.
+read_depth,secondary,,,"The finding comes from another source's summary (for example a review or ERA record), not the original."
