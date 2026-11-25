@@ -2,10 +2,13 @@
 
 *Working note, first written 21 Nov 2026, updated 22 Nov 2026; heat rule replaced 23 Nov 2026 (v2) and put in Lobell's log-yield form 24 Nov 2026 (v2.1). Source `S-CC4A-NOTE1` in `data/sources.csv`. This is a referenced heuristic with low confidence, derived for maize and applied to all crops until crop-specific deep dives (`data/deep_dive_log.csv`) are done.*
 
-`tables/hazard_loss.csv` holds one yield loss per hazard and stress level, as a percentage of normal-season yield with no practice. It is computed by `build.py` from two files:
+`tables/hazard_loss.csv` holds the yield loss per commodity, hazard and stress level, as a percentage of normal-season yield with no practice. Since decision 0002 (proposed) the loss function is the primary record and the tier losses are derived from it by `build.py`:
 
-- `data/hazard_loss_rule.csv`: the stress bands (drought: fraction of the requirement; heat: degree days in seasons at the level) and the point the central value is taken at.
-- `data/rule_parameters.csv`: the scalars (water-response factor, heat response per degree day).
+- `data/loss_functions.csv`: one function per commodity and hazard (form, metric, central, low and high parameters, basis, evidence). Only the `general` rows are filled; they hold the rules below and apply to every crop until crop rows are accepted.
+- `data/hazard_loss_rule.csv`: per commodity (now only `general`), the hazard values of seasons in each tier: the band and the point the central value is taken at.
+- `data/rule_parameters.csv`: the one global constant, `drought_zero_yield_at`.
+
+The six `general` rows are the ones described here; rows for crops appear when their functions are accepted.
 
 Values are rounded to whole percentages.
 

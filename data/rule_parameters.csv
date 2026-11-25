@@ -1,5 +1,2 @@
 parameter,value,unit,evidence_ids,note
-ky,1.25,yield response factor,E-0001,FAO seasonal yield response factor for maize. Drought loss = ky x (1 - season rainfall as a fraction of the requirement).
-drought_zero_yield_at,0.6,fraction of the requirement,E-0005,Upper bound of the drought loss: yield falls in a straight line from the requirement to zero at this fraction of it.
-heat_loss_pct_per_dd,1,"percent yield per degree day above the crop's moderate heat threshold, as a log-yield coefficient",E-0006,"Lobell et al. 2011: log(yield) coefficient -0.01 per degree day above 30 C (maize's moderate threshold), optimal rain-fed. Loss = 1 - exp(-0.01 x degree days). Used for the central and lower values."
-heat_loss_pct_per_dd_drought,1.7,"percent yield per degree day above the crop's moderate heat threshold, as a log-yield coefficient",E-0006,Lobell et al. 2011: -0.017 under managed drought. Loss = 1 - exp(-0.017 x degree days). Used for the upper value.
+drought_zero_yield_at,0.6,fraction of the requirement,E-0005,Yield falls in a straight line from the requirement to zero at this fraction of it. Sets the high drought parameter of the general row in loss_functions: 1 / (1 - 0.6) = 2.5 (build.py checks this).
