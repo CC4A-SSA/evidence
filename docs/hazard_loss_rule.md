@@ -1,11 +1,11 @@
 # The general rule for hazard loss
 
-*Working note, first written 21 Nov 2026, updated 22 Nov 2026; heat rule replaced 23 Nov 2026 (v2). Source `S-CC4A-NOTE1` in `data/sources.csv`. This is a referenced heuristic with low confidence, derived for maize and applied to all crops until crop-specific deep dives (`data/deep_dive_log.csv`) are done.*
+*Working note, first written 21 Nov 2026, updated 22 Nov 2026; heat rule replaced 23 Nov 2026 (v2) and put in Lobell's log-yield form 24 Nov 2026 (v2.1). Source `S-CC4A-NOTE1` in `data/sources.csv`. This is a referenced heuristic with low confidence, derived for maize and applied to all crops until crop-specific deep dives (`data/deep_dive_log.csv`) are done.*
 
 `tables/hazard_loss.csv` holds one yield loss per hazard and stress level, as a percentage of normal-season yield with no practice. It is computed by `build.py` from two files:
 
 - `data/hazard_loss_rule.csv`: the stress bands (drought: fraction of the requirement; heat: degree days in seasons at the level) and the point the central value is taken at.
-- `data/rule_parameters.csv`: the scalars (water-response factor, loss per degree day, the heat caps).
+- `data/rule_parameters.csv`: the scalars (water-response factor, heat response per degree day).
 
 Values are rounded to whole percentages.
 
@@ -33,25 +33,25 @@ Accepted 23 Nov 2026 (decision record `docs/decisions/0001-stress-tiers-and-heat
 
 **Stress levels** are those of the hazard pipeline (`cc4a-hazards` decisions 0006 and 0007): daily maximum temperature in the crop's heat window above three thresholds per crop (`heat_moderate_c`, `heat_severe_c`, `heat_extreme_c` in `tables/crop_thresholds.csv`). Moderate is the lowest optimum upper end among the window's stages, extreme the lowest ceiling, severe the midpoint. For maize: 30, 33 and 36 °C. The window is flowering to the end of seed filling for seed crops and the whole season for roots and tubers. How many days above a threshold make a season count is still open in the pipeline (0007, open point 4).
 
-**Loss rule.** Lobell et al. 2011 (E-0006): each degree day above 30 °C reduced African maize yield by 1 % under optimal rain-fed conditions and by 1.7 % under drought. Here loss = 1 % × degree days above the crop's moderate threshold, summed over the heat window. For maize the moderate threshold is Lobell's own 30 °C base; for other crops the same rule is applied at their own threshold, by analogy. Schlenker and Roberts (2009, E-0122) found the same shape, a steep fall above a threshold that differs by crop.
+**Loss rule.** Lobell et al. 2011 (E-0006): each degree day above 30 °C reduced African maize yield by 1 % under optimal rain-fed conditions and by 1.7 % under drought. Their model is fitted to log yield (coefficients −0.01 and −0.017), so the exact loss is 1 − exp(−0.01 × degree days); "1 % per degree day" holds only for small numbers. Here loss = 1 − exp(−0.01 × degree days above the crop's moderate threshold, summed over the heat window). For maize the moderate threshold is Lobell's own 30 °C base; for other crops the same rule is applied at their own threshold, by analogy. Schlenker and Roberts (2009, E-0122) found the same shape, a steep fall above a threshold that differs by crop.
 
-Degree days count only the part of each day spent above the threshold, from the daily minimum and maximum with a single sine curve (Baskerville and Emin 1969). Counted from the daily maximum alone they are 4 to 5 times higher, and every severe season would lose more than 100 %.
+Degree days count only the part of each day spent above the threshold, from the daily minimum and maximum with a sine curve; Lobell et al. 2011 did the same, hourly, from sowing to 150 days after sowing (Methods, equation 2). Counted from the daily maximum alone they are 4 to 5 times higher. Lobell's season is longer than the heat window, so applying the season response to window degree days is lenient. The trials spanned about 0-120 degree days above 30 °C (SI Fig. S1).
 
 **Degree days per level** come from `data/hazard_loss_rule.csv` (`band_low` = 25th percentile, `band_high` = 75th, `central_at` = median, of seasons at that level). Until the pipeline counts degree days, they come from the Kenya cube with an assumed daily range of 12 °C, maize, two sowing dates, with and without a 3 °C warm-offset correction (E-0123): smallest 25th percentile, median of the medians, largest 75th percentile.
 
-- **Central**: `central_at` × 1 %, at most 75 % (`heat_loss_cap_central_pct`).
-- **Low**: `band_low` × 1 %, at most 52 % (`heat_loss_cap_low_pct`).
-- **High**: `band_high` × 1.7 % (`heat_loss_pct_per_dd_drought`), capped at 100 %.
+- **Central**: 1 − exp(−0.01 × `central_at`).
+- **Low**: 1 − exp(−0.01 × `band_low`).
+- **High**: 1 − exp(−0.017 × `band_high`) (`heat_loss_pct_per_dd_drought`).
 
 | Level | Degree days: p25 / median / p75 | Central | Low | High |
 |---|---|---|---|---|
-| moderate | 5.1 / 8.6 / 13.3 | 9 % | 5 % | 23 % |
-| severe | 21.4 / 42.1 / 62.3 | 42 % | 21 % | 100 % |
-| extreme | 70.1 / 100.9 / 180 | 75 % (rule: 101) | 52 % (rule: 70) | 100 % |
+| moderate | 5.1 / 8.6 / 13.3 | 8 % | 5 % | 20 % |
+| severe | 21.4 / 42.1 / 62.3 | 34 % | 19 % | 65 % |
+| extreme | 70.1 / 100.9 / 180 | 64 % | 50 % | 95 % |
 
-**The caps.** The linear rule gives about 100 % at the extreme median, which pushes Lobell's slope further than his trials may reach (not checked). An experiment gives a direct bound instead: 15 days of daytime heating to about 33-40 °C cut harvestable kernels by 51.8 % just before silking and 74.5 % during silking (Rattalino Edreira et al. 2011, E-0124). The central value is capped at 75 % and the lower value at 52 %. The caps bind only at extreme. Kernel number is not yield, so the upper value stays at 100 %. A lower extreme loss is also the cautious choice for an avoided-loss estimate.
+**Cross-check.** 15 days of daytime heating to about 33-40 °C cut harvestable kernels by 51.8 % just before silking and 74.5 % during silking (Rattalino Edreira et al. 2011, E-0124). The extreme central, 64 %, lies inside that range. Version 2 (23 Nov) used 1 % × degree days and capped the extreme at 75 %; the log form follows the source and needs no cap.
 
-Weak points: the rule is from maize and applied to all crops; how Lobell counted degree days and over what period is not checked (main article not read); the degree days are from Kenya only, with no crop mask, fixed sowing dates, an assumed daily range and day rules that are not agreed. Taro, banana and sesame have no heat thresholds until the pipeline's table covers them; cassava, sweet potato and sunflower have only a moderate threshold.
+Weak points: the rule is from maize and applied to all crops; Lobell's trials were well fertilised and the authors note that nitrogen stress mutes the response to heat, so low-input farms may lose less; the degree days are from Kenya only, with no crop mask, fixed sowing dates, an assumed daily range and day rules that are not agreed. Taro, banana and sesame have no heat thresholds until the pipeline's table covers them; cassava, sweet potato and sunflower have only a moderate threshold.
 
 ## Sources
 

@@ -1,7 +1,5 @@
 parameter,value,unit,evidence_ids,note
 ky,1.25,yield response factor,E-0001,FAO seasonal yield response factor for maize. Drought loss = ky x (1 - season rainfall as a fraction of the requirement).
 drought_zero_yield_at,0.6,fraction of the requirement,E-0005,Upper bound of the drought loss: yield falls in a straight line from the requirement to zero at this fraction of it.
-heat_loss_pct_per_dd,1,percent yield loss per degree day above the crop's moderate heat threshold,E-0006,"Lobell et al. 2011, optimal rain-fed conditions, degree days above 30 C (maize's moderate threshold). Used for the central and lower values."
-heat_loss_pct_per_dd_drought,1.7,percent yield loss per degree day above the crop's moderate heat threshold,E-0006,"Lobell et al. 2011, under drought. Used for the upper value."
-heat_loss_cap_central_pct,75,percent yield loss,E-0124,Heat loss central value is at most this: 15 days of heating (about 33-40 C) during silking cut harvestable kernels by 74.5 % (Rattalino Edreira et al. 2011). Binds only the extreme level. Accepted 23 Nov 2026 (decision 0001).
-heat_loss_cap_low_pct,52,percent yield loss,E-0124,Heat loss lower value is at most this: the same heating just before silking cut harvestable kernels by 51.8 %. Binds only the extreme level.
+heat_loss_pct_per_dd,1,"percent yield per degree day above the crop's moderate heat threshold, as a log-yield coefficient",E-0006,"Lobell et al. 2011: log(yield) coefficient -0.01 per degree day above 30 C (maize's moderate threshold), optimal rain-fed. Loss = 1 - exp(-0.01 x degree days). Used for the central and lower values."
+heat_loss_pct_per_dd_drought,1.7,"percent yield per degree day above the crop's moderate heat threshold, as a log-yield coefficient",E-0006,Lobell et al. 2011: -0.017 under managed drought. Loss = 1 - exp(-0.017 x degree days). Used for the upper value.

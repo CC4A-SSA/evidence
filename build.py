@@ -14,6 +14,7 @@ Everything a person edits is a CSV file in data/. This script only copies, deriv
 Standard library only.
 """
 import csv
+import math
 import filecmp
 import os
 import shutil
@@ -58,8 +59,10 @@ def hazard_loss(bands, params):
     """One loss per hazard and stress level. Formulas are documented in docs/hazard_loss_rule.md."""
     p = {r["parameter"]: float(r["value"]) for r in params}
     ky, zero = p["ky"], p["drought_zero_yield_at"]
-    lpdd, lpdd_dry = p["heat_loss_pct_per_dd"], p["heat_loss_pct_per_dd_drought"]
-    cap_central, cap_low = p["heat_loss_cap_central_pct"], p["heat_loss_cap_low_pct"]
+    # Lobell et al. 2011 fit log(yield), so a coefficient of -0.01 per degree day means
+    # yield x exp(-0.01 x DD): loss = 1 - exp(-slope x DD). Exact for any DD, never above 100 %.
+    k, k_dry = p["heat_loss_pct_per_dd"] / 100, p["heat_loss_pct_per_dd_drought"] / 100
+    loglin = lambda slope, dd: (1 - math.exp(-slope * dd)) * 100
     rows = []
     for b in bands:
         lo, hi, at = float(b["band_low"]), float(b["band_high"]), float(b["central_at"])
@@ -69,9 +72,9 @@ def hazard_loss(bands, params):
             mid = (lo + hi) / 2
             high = min(100, (1 - (mid - zero) / (1 - zero)) * 100) if lo >= zero else 100
         elif b["hazard"] == "heat":     # bands are degree days in seasons at this level: p25, p75, median
-            central = min(cap_central, at * lpdd)
-            low = min(cap_low, lo * lpdd)
-            high = min(100, hi * lpdd_dry)
+            central = loglin(k, at)
+            low = loglin(k, lo)
+            high = loglin(k_dry, hi)
         else:
             raise SystemExit(f"hazard_loss_rule: unknown hazard {b['hazard']!r}")
         rows.append([b["hazard"], b["stress_level"], round(central), round(low), round(high),

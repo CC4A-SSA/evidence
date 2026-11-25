@@ -34,9 +34,19 @@ These tables and the hazard pipeline (`cc4a-hazards`) define stress levels diffe
 
 ## Open
 
-- How Lobell et al. 2011 counted degree days, and over what period: not read (publisher login). To check before any methods text.
+- ~~How Lobell et al. 2011 counted degree days, and over what period~~: read 24 Nov 2026, see the amendment.
 - The warm offset of the temperature source changes how often tiers occur, not much the degree days per tier.
 - In `cc4a-hazards`: a decision record for the drought tiers (read from this repository's `crop_thresholds`, pinned to a commit) and for reading `Tmin` and counting sine degree days per window. Accepted here in principle; the change is for the pipeline's own session.
+
+## Amendment, 24 Nov 2026: Lobell's log-yield form
+
+Accepted 24 Nov 2026. Lobell et al. 2011 read in full (Methods p. 45, equation 2; SI Fig. S1):
+
+- degree days are hourly temperatures interpolated between daily Tmin and Tmax with a sine curve, summed from sowing to 150 days after sowing: the method adopted here;
+- the trials span about 0-120 degree days above 30 °C;
+- the model is fitted to log yield, so the loss is 1 − exp(−0.01 × degree days), not 0.01 × degree days.
+
+Point 3 of the decision becomes: heat loss = 1 − exp(−0.01 × degree days above the crop's moderate threshold over the heat window), with −0.017 for the high value. Point 5 is withdrawn: the log form never reaches 100 %, so the 75 % and 52 % caps are dropped. The extreme central (64 %) now lies inside Rattalino Edreira et al.'s 52-75 % kernel loss, which serves as a cross-check. `hazard_loss` heat: 8 % (5-20), 34 % (19-65), 64 % (50-95), was 9 / 42 / 75 %.
 
 ## References
 
@@ -45,6 +55,6 @@ Crossref-checked on 23 Nov 2026.
 - Baskerville GL, Emin P (1969). Rapid estimation of heat accumulation from maximum and minimum temperatures. *Ecology* 50(3): 514-517. <https://doi.org/10.2307/1933912>
 - Butler EE, Huybers P (2013). Adaptation of US maize to temperature variations. *Nature Climate Change* 3(1): 68-72. <https://doi.org/10.1038/nclimate1585>
 - Doorenbos J, Kassam AH (1979). Yield response to water. FAO Irrigation and Drainage Paper 33. FAO, Rome.
-- Lobell DB, Bänziger M, Magorokosho C, Vivek B (2011). Nonlinear heat effects on African maize as evidenced by historical yield trials. *Nature Climate Change* 1(1): 42-45. <https://doi.org/10.1038/nclimate1043>
+- Lobell DB, Bänziger M, Magorokosho C, Vivek B (2011). Nonlinear heat effects on African maize as evidenced by historical yield trials. *Nature Climate Change* 1(1): 42-45. <https://doi.org/10.1038/nclimate1043>. Read in full 24 Nov 2026.
 - Rattalino Edreira JI, Budakli Carpici E, Sammarro D, Otegui ME (2011). Heat stress effects around flowering on kernel set of temperate and tropical maize hybrids. *Field Crops Research* 123(2): 62-73. <https://doi.org/10.1016/j.fcr.2011.04.015>. Figures from the abstract (p. 62), read in the author copy.
 - Schlenker W, Roberts MJ (2009). Nonlinear temperature effects indicate severe damages to U.S. crop yields under climate change. *PNAS* 106(37): 15594-15598. <https://doi.org/10.1073/pnas.0906865106>
