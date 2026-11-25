@@ -36,3 +36,30 @@ sunflower,crop,oilseed,sunflower
 coffee,crop,perennial_tree_crop,coffee
 cocoa,crop,perennial_tree_crop,cocoa
 tea,crop,perennial_tree_crop,tea
+barley,crop,cereal,barley
+chickpea,crop,legume,chickpea
+citrus,crop,fruit,citrus
+coconut,crop,perennial_tree_crop,coconut
+coffee_arabica,crop,perennial_tree_crop,arabica coffee
+coffee_robusta,crop,perennial_tree_crop,robusta coffee
+cotton,crop,fibre,cotton
+lentil,crop,legume,lentil
+oil_palm,crop,perennial_tree_crop,oil palm
+onion,crop,vegetable,onion
+other_cereals,crop,cereal,"other cereals (teff, fonio; MapSPAM ocer)"
+other_fibre_crops,crop,fibre,"other fibre crops (sisal, jute; MapSPAM ofib)"
+other_oil_crops,crop,oilseed,other oil crops (MapSPAM ooil)
+other_pulses,crop,legume,other pulses (MapSPAM opul)
+other_roots,crop,root_tuber,"other roots and tubers (taro, cocoyam; MapSPAM orts)"
+plantain,crop,fruit,plantain
+rapeseed,crop,oilseed,rapeseed
+rest_of_crops,crop,other_crop,rest of crops (MapSPAM rest)
+rubber,crop,perennial_tree_crop,rubber
+small_millet,crop,cereal,small millets (finger millet and others; MapSPAM mill)
+sugar_beet,crop,sugar_crop,sugar beet
+sugarcane,crop,sugar_crop,sugarcane
+temperate_fruit,crop,fruit,temperate fruit (MapSPAM temf)
+tobacco,crop,other_crop,tobacco
+tomato,crop,vegetable,tomato
+tropical_fruit,crop,fruit,tropical fruit (MapSPAM trof)
+vegetables,crop,vegetable,vegetables (MapSPAM vege)

@@ -88,7 +88,7 @@ def hazard_loss(functions, bands):
         for b in tiers:
             lo, hi, at = float(b["band_low"]), float(b["band_high"]), float(b["central_at"])
             x_low, x_high = (hi, (lo + hi) / 2) if f["form"] == "ky_shortfall" else (lo, hi)
-            ev = "|".join(dict.fromkeys(f["evidence_ids"].split("|") + b["evidence_ids"].split("|")))
+            ev = "|".join(dict.fromkeys(e for e in f["evidence_ids"].split("|") + b["evidence_ids"].split("|") if e))
             note = b["note"] if f["commodity"] == "general" else f["note"]
             g = lambda x: f"{x:g}"
             rows.append([f["commodity"], f["hazard"], b["stress_level"], g(x_low), g(at), g(x_high),
