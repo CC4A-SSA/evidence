@@ -1,6 +1,6 @@
 # 0002 Yield loss as a function per crop; stress-tier losses derived from it
 
-**Status:** Proposed, 25 Nov 2026. Direction agreed on 24 and 25 Nov 2026: "yearly loss would be better for both hazards", and "function primary", with moderate, severe and extreme losses derived from the function. The table layout and the parameter values below are proposals and are Pending expert review. Builds on decision 0001 (as amended 24 Nov 2026).
+**Status:** Accepted, 25 Nov 2026 (table layout). Direction agreed on 24 and 25 Nov 2026: "yearly loss would be better for both hazards", and "function primary", with moderate, severe and extreme losses derived from the function. The per-crop parameter values are not yet in the tables and are Pending expert review. Builds on decision 0001 (as amended 24 Nov 2026).
 
 ## Context
 
