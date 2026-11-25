@@ -15,14 +15,32 @@ hazard_mitigation,mitigation_potential,text,yes,none | low | medium | high | tot
 hazard_mitigation,evidence_ids,list,yes,evidence register,Rows of the evidence register behind the rating.
 hazard_mitigation,confidence,text,yes,low | medium | high,"low, medium or high."
 hazard_mitigation,note,text,no,,"Anything a user should know, including a case where the practice makes the loss worse."
+hazard_loss,commodity,text,yes,commodity list,"Crop the loss applies to, or general for the maize-derived rule applied to all crops."
 hazard_loss,hazard,text,yes,drought | heat,drought or heat.
 hazard_loss,stress_level,text,yes,moderate | severe | extreme,"moderate, severe or extreme."
-hazard_loss,yield_loss_pct,number,yes,,"Yield lost when the hazard occurs at this level, with no practice, as a percentage of normal-season yield. One value for all commodities."
-hazard_loss,yield_loss_low_pct,number,yes,,Lower end of the plausible range for the loss.
-hazard_loss,yield_loss_high_pct,number,yes,,Upper end of the plausible range for the loss.
-hazard_loss,evidence_ids,list,yes,evidence register,Rows of the evidence register behind the value.
+hazard_loss,metric_low,number,yes,,Hazard value the low loss is taken at (drought: wetter band edge; heat: 25th percentile of degree days in seasons at this level).
+hazard_loss,metric_central,number,yes,,Hazard value the central loss is taken at (drought: central point of the band; heat: median degree days).
+hazard_loss,metric_high,number,yes,,Hazard value the high loss is taken at (drought: middle of the band; heat: 75th percentile of degree days).
+hazard_loss,yield_loss_pct,number,yes,,"Yield lost when the hazard occurs at this level, with no practice, as a percentage of normal-season yield. Derived from the commodity's loss function (loss_functions) at metric_central."
+hazard_loss,yield_loss_low_pct,number,yes,,Lower end of the plausible range: param_low at metric_low.
+hazard_loss,yield_loss_high_pct,number,yes,,Upper end of the plausible range: param_high at metric_high.
+hazard_loss,evidence_ids,list,yes,evidence register,Rows of the evidence register behind the function and the tier band.
 hazard_loss,confidence,text,yes,low | medium | high,"low, medium or high."
 hazard_loss,note,text,no,,Anything a user should know.
+loss_functions,commodity,text,yes,commodity list,"Crop, or general for the rule applied to crops without an accepted row of their own."
+loss_functions,hazard,text,yes,drought | heat,drought or heat.
+loss_functions,form,text,yes,ky_shortfall | log_yield_degree_days | none | deferred_perennial,How a season's hazard value becomes a yield loss.
+loss_functions,metric,text,no,,"The hazard value the parameters apply to, and over which window."
+loss_functions,param_central,number,no,,Central parameter (ky or k). Empty for none and deferred_perennial.
+loss_functions,param_low,number,no,,Parameter for the low end of the range.
+loss_functions,param_high,number,no,,Parameter for the high end of the range (heat: the value under drought).
+loss_functions,param_unit,text,no,,"Unit of the parameters, with the formula."
+loss_functions,basis,text,yes,own | proxy | general | deferred,"Whether the parameters come from the crop's own evidence, another crop, the general rule, or are deferred."
+loss_functions,proxy_commodity,text,no,,The crop a parameter is borrowed from (basis proxy or general).
+loss_functions,evidence_ids,list,no,evidence register,Rows of the evidence register behind the parameters.
+loss_functions,confidence,text,yes,low | medium | high,"low, medium or high."
+loss_functions,status,text,yes,Pending expert review | accepted,"Pending expert review, or accepted."
+loss_functions,note,text,no,,Anything a user should know.
 applicability,practice_id,text,yes,practice register ID,Practice.
 applicability,commodity_group,text,yes,commodity group,Commodity group. Every in-scope practice has a row for every group.
 applicability,applies,text,yes,yes | conditional | no,"yes, conditional or no."

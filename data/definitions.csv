@@ -37,3 +37,14 @@ preferred_source,ecocrop,,,Use the EcoCrop value because Concern gives none that
 read_depth,full_text,,,"The finding was read from the full text, with a page, table or figure locator."
 read_depth,abstract,,,The finding was read from the abstract only. Re-read against the full text before use in a table.
 read_depth,secondary,,,"The finding comes from another source's summary (for example a review or ERA record), not the original."
+
+loss_form,ky_shortfall,,,"Drought: loss = ky x (1 - season supply / requirement), between 0 and 100 % (Doorenbos and Kassam 1979)."
+loss_form,log_yield_degree_days,,,"Heat: loss = 1 - exp(-k x degree days above the crop's moderate threshold over its heat window), the log-yield form of Lobell et al. 2011."
+loss_form,none,,,No loss from this hazard for this crop (evidence of no effect).
+loss_form,deferred_perennial,,,Not computed yet: a perennial whose losses lag and carry over between years; needs a multi-season metric.
+loss_basis,own,,,Parameters from evidence for this crop.
+loss_basis,proxy,,,"Parameters borrowed from another crop (proxy_commodity), for the reason in the note."
+loss_basis,general,,,"The general rule, derived for maize and applied to this crop."
+loss_basis,deferred,,,No parameters yet.
+review_status,Pending expert review,,,Proposed; not yet reviewed.
+review_status,accepted,,,Accepted for use.
