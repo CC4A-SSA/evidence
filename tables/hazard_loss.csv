@@ -20,9 +20,9 @@ common_bean,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0
 common_bean,drought,moderate,1,0.9,0.9,11,0,11,E-0507|E-0001|E-0003|E-0005,low,
 common_bean,drought,severe,0.8,0.7,0.7,34,23,34,E-0507|E-0001|E-0003|E-0005,low,
 common_bean,drought,extreme,0.6,0.5,0.3,57,46,80,E-0507|E-0001|E-0003|E-0005,low,
-cassava,heat,moderate,5.1,8.6,13.3,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123,low,"No heat loss at African temperatures: Blanc 2012 not significant, Schlenker and Lobell 2010 positive. Heat x drought interaction to consider."
-cassava,heat,severe,21.4,42.1,62.3,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123,low,"No heat loss at African temperatures: Blanc 2012 not significant, Schlenker and Lobell 2010 positive. Heat x drought interaction to consider."
-cassava,heat,extreme,70.1,100.9,180,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,"No heat loss at African temperatures: Blanc 2012 not significant, Schlenker and Lobell 2010 positive. Heat x drought interaction to consider."
+cassava,heat,moderate,5.1,8.6,13.3,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123,low,"Deliberate zero, not deferred: the evidence shows no heat loss at African temperatures (Blanc 2012 SSA panel not significant; Schlenker and Lobell 2010 coefficient positive; crop models put the optimum near 24-28 C with no yield penalty). Heat x drought interaction (larger drought losses when hot, Brown 2016) to consider in a deep dive."
+cassava,heat,severe,21.4,42.1,62.3,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123,low,"Deliberate zero, not deferred: the evidence shows no heat loss at African temperatures (Blanc 2012 SSA panel not significant; Schlenker and Lobell 2010 coefficient positive; crop models put the optimum near 24-28 C with no yield penalty). Heat x drought interaction (larger drought losses when hot, Brown 2016) to consider in a deep dive."
+cassava,heat,extreme,70.1,100.9,180,0,0,0,E-0500|E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,"Deliberate zero, not deferred: the evidence shows no heat loss at African temperatures (Blanc 2012 SSA panel not significant; Schlenker and Lobell 2010 coefficient positive; crop models put the optimum near 24-28 C with no yield penalty). Heat x drought interaction (larger drought losses when hot, Brown 2016) to consider in a deep dive."
 cassava,drought,moderate,1,0.9,0.9,12,0,12,E-0519|E-0001|E-0003|E-0005,low,No cassava ky; drought hits 1-5 months after planting.
 cassava,drought,severe,0.8,0.7,0.7,36,24,36,E-0519|E-0001|E-0003|E-0005,low,No cassava ky; drought hits 1-5 months after planting.
 cassava,drought,extreme,0.6,0.5,0.3,60,48,84,E-0519|E-0001|E-0003|E-0005,low,No cassava ky; drought hits 1-5 months after planting.
@@ -101,9 +101,9 @@ other_pulses,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-
 other_pulses,drought,moderate,1,0.9,0.9,12,0,12,E-0508|E-0510|E-0001|E-0003|E-0005,low,Mung bean and Bambara; low = groundnut 0.70 (Bambara).
 other_pulses,drought,severe,0.8,0.7,0.7,37,14,37,E-0508|E-0510|E-0001|E-0003|E-0005,low,Mung bean and Bambara; low = groundnut 0.70 (Bambara).
 other_pulses,drought,extreme,0.6,0.5,0.3,62,28,87,E-0508|E-0510|E-0001|E-0003|E-0005,low,Mung bean and Bambara; low = groundnut 0.70 (Bambara).
-other_roots,heat,moderate,5.1,8.6,13.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,"Taro, cocoyam."
-other_roots,heat,severe,21.4,42.1,62.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,"Taro, cocoyam."
-other_roots,heat,extreme,70.1,100.9,180,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,"Taro, cocoyam."
+other_roots,heat,moderate,5.1,8.6,13.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,"Deliberate zero by proxy from cassava (warm-adapted tuber, EcoCrop optimum similar); not deferred. No crop-specific heat evidence found; deep dive."
+other_roots,heat,severe,21.4,42.1,62.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,"Deliberate zero by proxy from cassava (warm-adapted tuber, EcoCrop optimum similar); not deferred. No crop-specific heat evidence found; deep dive."
+other_roots,heat,extreme,70.1,100.9,180,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,"Deliberate zero by proxy from cassava (warm-adapted tuber, EcoCrop optimum similar); not deferred. No crop-specific heat evidence found; deep dive."
 other_roots,drought,moderate,1,0.9,0.9,12,0,12,E-0519|E-0001|E-0003|E-0005,low,"Low 0.3 from one taro rain-shelter trial (Mabhaudhi 2013, derived)."
 other_roots,drought,severe,0.8,0.7,0.7,36,6,36,E-0519|E-0001|E-0003|E-0005,low,"Low 0.3 from one taro rain-shelter trial (Mabhaudhi 2013, derived)."
 other_roots,drought,extreme,0.6,0.5,0.3,60,12,84,E-0519|E-0001|E-0003|E-0005,low,"Low 0.3 from one taro rain-shelter trial (Mabhaudhi 2013, derived)."
@@ -218,9 +218,9 @@ wheat,heat,extreme,70.1,100.9,180,64,50,95,E-0006|E-0007|E-0122|E-0123|E-0124,lo
 wheat,drought,moderate,1,0.9,0.9,11,0,11,E-0502|E-0001|E-0003|E-0005,low,"Spring wheat 1.15, winter 1.05 (FAO 66 Table 1)."
 wheat,drought,severe,0.8,0.7,0.7,34,21,34,E-0502|E-0001|E-0003|E-0005,low,"Spring wheat 1.15, winter 1.05 (FAO 66 Table 1)."
 wheat,drought,extreme,0.6,0.5,0.3,57,42,80,E-0502|E-0001|E-0003|E-0005,low,"Spring wheat 1.15, winter 1.05 (FAO 66 Table 1)."
-yam,heat,moderate,5.1,8.6,13.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,Warm-adapted tuber.
-yam,heat,severe,21.4,42.1,62.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,Warm-adapted tuber.
-yam,heat,extreme,70.1,100.9,180,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,Warm-adapted tuber.
+yam,heat,moderate,5.1,8.6,13.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,"Deliberate zero by proxy from cassava (warm-adapted tuber, EcoCrop optimum similar); not deferred. No crop-specific heat evidence found; deep dive."
+yam,heat,severe,21.4,42.1,62.3,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123,low,"Deliberate zero by proxy from cassava (warm-adapted tuber, EcoCrop optimum similar); not deferred. No crop-specific heat evidence found; deep dive."
+yam,heat,extreme,70.1,100.9,180,0,0,0,E-0516|E-0006|E-0007|E-0122|E-0123|E-0124,low,"Deliberate zero by proxy from cassava (warm-adapted tuber, EcoCrop optimum similar); not deferred. No crop-specific heat evidence found; deep dive."
 yam,drought,moderate,1,0.9,0.9,12,0,12,E-0519|E-0001|E-0003|E-0005,low,
 yam,drought,severe,0.8,0.7,0.7,36,24,36,E-0519|E-0001|E-0003|E-0005,low,
 yam,drought,extreme,0.6,0.5,0.3,60,48,84,E-0519|E-0001|E-0003|E-0005,low,
