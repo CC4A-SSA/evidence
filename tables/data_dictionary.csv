@@ -19,8 +19,8 @@ hazard_loss,commodity,text,yes,commodity list,"Crop the loss applies to, or gene
 hazard_loss,hazard,text,yes,drought | heat,drought or heat.
 hazard_loss,stress_level,text,yes,moderate | severe | extreme,"moderate, severe or extreme."
 hazard_loss,metric_low,number,yes,,Hazard value the low loss is taken at (drought: wetter band edge; heat: 25th percentile of degree days in seasons at this level).
-hazard_loss,metric_central,number,yes,,Hazard value the central loss is taken at (drought: central point of the band; heat: median degree days).
-hazard_loss,metric_high,number,yes,,Hazard value the high loss is taken at (drought: middle of the band; heat: 75th percentile of degree days).
+hazard_loss,metric_central,number,yes,,Hazard value the central loss is taken at (drought: central_at in hazard_loss_rule
+hazard_loss,metric_high,number,yes,,Hazard value the high loss is taken at (drought: centre of the band
 hazard_loss,yield_loss_pct,number,yes,,"Yield lost when the hazard occurs at this level, with no practice, as a percentage of normal-season yield. Derived from the commodity's loss function (loss_functions) at metric_central."
 hazard_loss,yield_loss_low_pct,number,yes,,Lower end of the plausible range: param_low at metric_low.
 hazard_loss,yield_loss_high_pct,number,yes,,Upper end of the plausible range: param_high at metric_high.
