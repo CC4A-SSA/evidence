@@ -60,7 +60,7 @@ New names, only where the review has no field:
 - `stress_timing`
 - `fertiliser_n_rate`: the review has no N-rate field.
 - `comparator_fertility`: fertility of the control arm. The review records the comparator in words (`comparator`, row 24).
-- `environment_severity`: only for the Finlay–Wilkinson slope (point 5).
+- `environment_severity`: only where `m` changes with severity within a tier (point 5).
 
 ### 3. Status, and which rows change values
 
@@ -89,9 +89,11 @@ New names, only where the review has no field:
 | `soil_ph`, `soil_organic_carbon_pct` | `p` | Biochar and rock-dust response |
 | heat in a drought season | `hazard_metric`: stream B defines a compound heat-and-drought hazard class, and `m` is tiered on it like any other tier. `L` already carries co-occurrence (decision 0002: k = 0.017 in a drought season; combined loss 1 − (1 − Ld)(1 − Lh)). Steward et al. 2018's heat × moisture × clay finding (E-0302) stays a `descriptive` `m` row | Pete, 25 Nov 2026. Practice buffering differs when heat and drought coincide (E-0302, non-additive), so it needs its own tier, not a moderator. Until a source reports `m` for compound seasons, those cells go down the D6 gap ladder |
 
-### 5. The Finlay–Wilkinson slope is kept, as a descriptive row (proposed; Pete deciding)
+### 5. No separate Finlay–Wilkinson row
 
-A slope of yield on the environment mean that differs between the practice and its control (Finlay and Wilkinson 1963; Eberhart and Russell 1966) means `m` changes with severity. It is the only direct check that `m` is proportional to `L`, which is what lets `m` transfer between pixels with different losses. The tiers absorb most of that dependence, so a row is written only where the dependence persists within a tier, or where tiers cannot be estimated: `moderator` `environment_severity`, `quantity` `m`, `status` `descriptive`. It is indirect, because the environment mean mixes stress with fertility and management. It never changes table values.
+Pete, 25 Nov 2026. A slope of yield on the environment mean that differs between the practice and its control (Finlay and Wilkinson 1963; Eberhart and Russell 1966) means `m` changes with severity. Tiering `m` by severity measures that directly, so the slope gets no row of its own. The Finlay–Wilkinson and Eberhart–Russell results stay in `evidence_register` as yield-stability evidence (E-0366 to E-0370). The slope is also indirect, because the environment mean mixes stress with fertility and management.
+
+An `environment_severity` row (`quantity` `m`, `status` `descriptive`) is written only where `m` still changes with severity within a tier.
 
 ### 6. What the evidence supports now
 
@@ -125,8 +127,6 @@ So for now, almost all `m` rows will be descriptive or hypothesised, and they in
 
 - Every home in point 4, and the four new names: Pending expert review.
 - The edges of the compound heat-and-drought class (stream B, extending decision 0001).
-- Whether to keep the Finlay–Wilkinson row (point 5): Pete is still deciding.
-- The reference yield for `L` (normal season or average; method proposal Q4). It sets `L`'s denominator.
 - Whether a low-input multiplier on k is adopted (decision 0002, Open).
 
 ## References
