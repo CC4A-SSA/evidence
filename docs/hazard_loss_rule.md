@@ -27,6 +27,7 @@ FAO yield response to water (E-0001): relative yield loss = ky × relative short
 - **Central**: ky × (1 − `central_at`).
 - **Low**: ky × (1 − `band_high`), the loss at the wetter edge of the band. For moderate that edge is the requirement itself, so the low is 0 %.
 - **High**: the loss at the middle of the band if yield fell in a straight line from the requirement to zero at 60 % of it (`drought_zero_yield_at`). Below 60 % the high is 100 %.
+  The same high applies to every crop, whatever its own ky (decision 0002, amendment of 25 Nov 2026): a crop's published ky does not bound its uncertainty, because ky varies within a crop as much as between crops (E-0535), and a seasonal deficit that falls at flowering and yield formation gives maize ky 2.3 (E-0536).
 
 Weak points: rainfall shortfall is not the same as shortfall in crop water use (runoff, soil storage, distribution within the season); one seasonal ky hides the much higher sensitivity at flowering; ky for crops other than maize ranges from 0.70 (groundnut) to 1.25, and sorghum and millets lack a value in the FAO table.
 

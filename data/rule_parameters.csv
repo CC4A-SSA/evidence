@@ -1,2 +1,2 @@
 parameter,value,unit,evidence_ids,note
-drought_zero_yield_at,0.6,fraction of the requirement,E-0005,Yield falls in a straight line from the requirement to zero at this fraction of it. Sets the high drought parameter of the general row in loss_functions: 1 / (1 - 0.6) = 2.5 (build.py checks this).
+drought_zero_yield_at,0.6,fraction of the requirement,E-0005|E-0535|E-0536,"Yield falls in a straight line from the requirement to zero at this fraction of it. Sets the high drought parameter of every ky_shortfall row in loss_functions, general and per crop: 1 / (1 - 0.6) = 2.5 (build.py checks this; decision 0002, 25 Nov amendment)."

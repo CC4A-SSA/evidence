@@ -208,9 +208,10 @@ def check(folder):
         if (f["commodity"], f["hazard"]) not in series:
             errs.append(f"hazard_loss: no rows derived for {f['commodity']} {f['hazard']}")
     zero = next((num(r["value"]) for r in read(DATA, "rule_parameters") if r["parameter"] == "drought_zero_yield_at"), None)
-    gd = next((f for f in t["loss_functions"] if f["commodity"] == "general" and f["hazard"] == "drought"), None)
-    if zero is not None and gd and abs(num(gd["param_high"]) - 1 / (1 - zero)) > 1e-9:
-        errs.append("loss_functions: general drought param_high should be 1 / (1 - drought_zero_yield_at)")
+    if zero is not None:
+        for f in t["loss_functions"]:
+            if f["hazard"] == "drought" and f["form"] == "ky_shortfall" and abs(num(f["param_high"]) - 1 / (1 - zero)) > 1e-9:
+                errs.append(f"loss_functions: {f['commodity']} drought param_high should be 1 / (1 - drought_zero_yield_at) (decision 0002, 25 Nov amendment)")
 
     used = {e for name in ("yield_benefit", "hazard_mitigation", "hazard_loss", "loss_functions") for r in t[name] for e in r["evidence_ids"].split("|")}
     summary = {"rows": {name: len(t[name]) for name in CHECKED},
