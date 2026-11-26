@@ -1,6 +1,6 @@
 # 0002 Yield loss as a function per crop; stress-tier losses derived from it
 
-**Status:** Accepted, 25 Nov 2026 (table layout). Direction agreed on 24 and 25 Nov 2026: "yearly loss would be better for both hazards", and "function primary", with moderate, severe and extreme losses derived from the function. The per-crop parameter values are not yet in the tables and are Pending expert review. Builds on decision 0001 (as amended 24 Nov 2026).
+**Status:** Accepted, 25 Nov 2026 (table layout). Direction agreed on 24 and 25 Nov 2026: "yearly loss would be better for both hazards", and "function primary", with moderate, severe and extreme losses derived from the function. The per-crop parameter values are not yet in the tables and are Pending expert review. Builds on decision 0001 (as amended 24 Nov 2026). Amended 25 Nov 2026: one high drought parameter (the zero-yield line) for all crops (see Amendment).
 
 ## Context
 
@@ -58,6 +58,31 @@ Binning them into tiers throws information away, and the tier losses had to be b
 - The systematic review's loss matrix can be filled from the derived tier table. This changes what Stream 3 should deliver: relationships per crop rather than one number per class. To agree with the systematic review team, through the orchestrator.
 - Interim limitation: until the pipeline delivers per-crop distributions, crop differences in tier losses come only from the parameters (ky, k, zero heat), not from each crop's exposure.
 
+## Amendment, 25 Nov 2026: one high drought parameter for all crops
+
+**Decided 25 Nov 2026.** For drought, each crop keeps its own ky for the central and low parameters. The high parameter is the same for every crop: 2.5 = 1 / (1 − `drought_zero_yield_at`), meaning yield falls in a straight line to zero at 60 % of the requirement. This is the high already used by the `general` row (E-0005). It replaces each crop's top published ky as the high (for example maize 1.33, sorghum 0.9). `build.py --check` enforces it on every `ky_shortfall` row.
+
+**Alternative rejected:** each crop's own range of published ky. Where only one value is published (sorghum, cowpea, groundnut, cotton, soybean, sesame and others), the range would collapse to that value. For sorghum, for example, the severe-tier range would be 27 to 27 %. That reflects a gap in the literature, not certainty.
+
+**Why:**
+
+1. **A crop's published ky does not bound that crop's uncertainty.** Reviewing later trials against the FAO 33 values, FAO 66 concludes that "the within-crop variation in Ky may be as large as that between crops" (citing Stanhill 1985). It also says "no specific trend can be extracted" from the differences between the IAEA and FAO 33 values (Steduto et al. 2012, p. 11; E-0535). Its Table 2 shows, for example, bean seasonal ky of 0.59 and 1.43 from IAEA trials, against 1.15 in FAO 33 (crop scan F-0060, quote QTE-F-0060). One uncertainty band shared by all crops is the honest reading of that spread.
+2. **The hazard metric cannot see timing, and timing dominates the loss.** Seasonal ky assumes the deficit is spread over the season. FAO 66 Figure 1 gives maize ky 1.5 for a deficit at flowering and 2.3 for one at flowering plus yield formation, against the seasonal 1.25 (Steduto et al. 2012, pp. 7–8; E-0536). Season rainfall against a requirement cannot tell these apart (E-0005 records "Ignores timing within the season"). The high has to cover a season whose shortfall falls at the sensitive stages. 2.5 sits just above maize's steepest stage function (2.3).
+3. **Rainfall shortfall understates the shortfall in crop water use** in dry seasons (runoff and poor distribution), so a given rainfall fraction can mean a deeper evapotranspiration deficit than the central assumes (`docs/hazard_loss_rule.md`, weak points).
+4. **Crops thought tolerant are not always so in yield.** A meta-analysis found yield loss under drought "similar between potato and species thought to be drought-resistant such as cassava and sweet potato" (Daryanto et al. 2016, abstract; crop scan QTE-F-0117). A low published ky should not shrink the high.
+
+**What it changes:**
+
+- In `tables/hazard_loss`, the drought highs become 25 / 75 / 100 % (moderate / severe / extreme) for every crop with a drought function.
+- The centrals and lows are unchanged. For sorghum, for example, severe is 27 % central with a range of 18–75 %.
+- Perennials stay `deferred`.
+
+**Limits:**
+
+- 2.5 is maize-derived. FAO 66 gives no stage ky for most crops, so the high may be too wide for deep-rooted or indeterminate crops (pigeon pea, groundnut, cassava).
+- A crop-specific high comes back when a crop has stage-resolved ky, or when the pipeline's water-balance metric captures timing (point 6).
+- Pending expert review, as are all crop values.
+
 ## Open
 
 - The transfer rules in point 4 and every value in the draft parameter table: Pending expert review.
@@ -78,7 +103,9 @@ The draft parameter table is there as `2026-11-25 - DRAFT - loss function parame
 
 ## References
 
+- Daryanto S, Wang L, Jacinthe P-A (2016). Drought effects on root and tuber production: a meta-analysis. *Agricultural Water Management* 176: 122-131. <https://doi.org/10.1016/j.agwat.2016.05.019>
 - Doorenbos J, Kassam AH (1979). Yield response to water. FAO Irrigation and Drainage Paper 33. FAO, Rome.
 - Lobell DB, Bänziger M, Magorokosho C, Vivek B (2011). Nonlinear heat effects on African maize as evidenced by historical yield trials. *Nature Climate Change* 1(1): 42-45. <https://doi.org/10.1038/nclimate1043>
 - Schlenker W, Lobell DB (2010). Robust negative impacts of climate change on African agriculture. *Environmental Research Letters* 5(1): 014010. <https://doi.org/10.1088/1748-9326/5/1/014010>
+- Stanhill G (1985). The water resource for agriculture. *Philosophical Transactions of the Royal Society of London B* 310(1144): 161-173. <https://doi.org/10.1098/rstb.1985.0105> (cited through Steduto et al. 2012; not held)
 - Steduto P, Hsiao TC, Fereres E, Raes D (2012). Crop yield response to water. FAO Irrigation and Drainage Paper 66. FAO, Rome.
