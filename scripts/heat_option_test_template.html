@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heat option test</title>
+<!-- Built by scripts/heat_option_test.py from this template. Edit the template, not docs/heat-option-test.html. -->
+<style>
+:root {
+  color-scheme: light;
+  --surface-0: #f6f6f4; --surface-1: #fcfcfb; --line: #e3e2de; --grid: #ecebe7;
+  --text-primary: #0b0b0b; --text-secondary: #52514e; --text-muted: #7a7974;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4;
+  --flag: #fff4d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface-0: #121211; --surface-1: #1a1a19; --line: #34332f; --grid: #2a2a27;
+    --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #8f8e86;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
+    --flag: #3a3220;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-0: #121211; --surface-1: #1a1a19; --line: #34332f; --grid: #2a2a27;
+  --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #8f8e86;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181;
+  --flag: #3a3220;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface-0); color: var(--text-primary);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 26px; margin: 0 0 4px; }
+h2 { font-size: 19px; margin: 36px 0 8px; }
+h3 { font-size: 16px; margin: 0 0 4px; }
+p, li { color: var(--text-secondary); max-width: 74ch; }
+.status { display: inline-block; font-size: 13px; padding: 2px 8px; border-radius: 4px;
+  background: var(--flag); color: var(--text-primary); }
+.card { background: var(--surface-1); border: 1px solid var(--line); border-radius: 8px;
+  padding: 16px; margin: 12px 0; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; }
+.controls label { font-size: 14px; color: var(--text-secondary); display: flex; gap: 8px; align-items: center; }
+.controls output { font-variant-numeric: tabular-nums; color: var(--text-primary); min-width: 4ch; }
+.grid3 { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 900px) { .grid3 { grid-template-columns: 1fr 1fr; } }
+.chart { position: relative; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--text-secondary); margin: 6px 0; }
+.legend span::before { content: ""; display: inline-block; width: 14px; height: 0; border-top: 2px solid var(--c);
+  vertical-align: middle; margin-right: 6px; }
+.legend span.dash::before { border-top-style: dashed; }
+.legend span.dot::before { width: 8px; height: 8px; border: 0; border-radius: 50%; background: var(--c); }
+.tip { position: absolute; pointer-events: none; background: var(--surface-1); border: 1px solid var(--line);
+  border-radius: 6px; padding: 6px 8px; font-size: 12px; line-height: 1.4; color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,.12); display: none; white-space: nowrap; z-index: 2; }
+.tip .k { color: var(--text-secondary); }
+.tip i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+.note { font-size: 13px; color: var(--text-muted); }
+.axis text { fill: var(--text-muted); font-size: 11px; }
+.axis line, .axis path { stroke: var(--line); }
+.gridline { stroke: var(--grid); }
+table { border-collapse: collapse; font-size: 13px; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 4px 8px; border-bottom: 1px solid var(--line); }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--text-secondary); font-weight: 600; }
+.scroll { overflow-x: auto; }
+td.hi { background: var(--flag); }
+code { font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Heat option test</h1>
+<p><span class="status">Draft. Pending expert review.</span> Test of draft decision 0005: how the base temperature of a crop heat slope changes yield loss. Built by <code>scripts/heat_option_test.py</code>.</p>
+
+<div class="card">
+<h3>The options</h3>
+<ul>
+<li><b>Now:</b> every crop uses the maize slope (k 0.01 per degree day, Lobell et al. 2011, fitted above 30 °C) on degree days above the crop's moderate heat threshold <code>heat_moderate_c</code>.</li>
+<li><b>A:</b> refit the paper's k to <code>heat_moderate_c</code>. k<sub>A</sub> = k<sub>paper</sub> × mean(degree days above paper base) ÷ mean(degree days above <code>heat_moderate_c</code>), over reference seasons (here the Kenya seasons).</li>
+<li><b>B:</b> keep the paper's own equation and base temperature (<code>form</code> and <code>metric_base_c</code>); tiers unchanged.</li>
+<li><b>C:</b> move <code>heat_moderate_c</code> (and the tier ladder with it) to the paper's base. Loss per season is the same as B; which seasons count as moderate, severe or extreme changes.</li>
+</ul>
+</div>
+
+<h2>1. Loss against heat exposure</h2>
+<p>Each point is a typical heat window: daily maximum temperatures spread normally around the window mean, a fixed daily range, and hourly temperatures on a sine curve between Tmin and Tmax. The x axis is degree days above the crop's <code>heat_moderate_c</code> (rice 26 °C, maize 30 °C; wheat has none, so 30 °C is assumed).</p>
+<div class="card controls" id="controls">
+  <label>Daily range (Tmax − Tmin) <input type="range" id="dtr" min="8" max="16" step="1" value="12"><output id="dtr-o">12 °C</output></label>
+  <label>Day-to-day spread of Tmax (SD) <input type="range" id="sd" min="0.5" max="4" step="0.5" value="2.5"><output id="sd-o">2.5 °C</output></label>
+  <label>Wheat: window mean Tmax where Tack's slope starts <input type="range" id="tref" min="20" max="32" step="0.5" value="26"><output id="tref-o">26 °C</output></label>
+  <label>x axis <select id="xaxis"><option value="dd">Degree days above heat_moderate_c</option><option value="t">Window mean Tmax</option></select></label>
+</div>
+<div class="grid3">
+  <div class="card"><h3>Rice</h3><div class="legend" id="lg-rice"></div><div class="chart" id="ch-rice"></div>
+    <p class="note">Rice window 60 days. Option C gives the same line as B (Dong). Lyman: day degree days above 33 °C plus night degree days above 22 °C, here daily (Tmax − 33, Tmin − 22), not the paper's exact counting. Jian: % per day of exposure, a day counted when Tmax is 30–35 °C or above 35 °C; field-warming experiments, so a proxy. k<sub>A</sub> from <span id="ka-src"></span>.</p></div>
+  <div class="card"><h3>Maize</h3><div class="legend" id="lg-maize"></div><div class="chart" id="ch-maize"></div>
+    <p class="note">Maize window 60 days. The tier (30 °C) and Lobell's base (30 °C) match, so now, A, B and C are the same line.</p></div>
+  <div class="card"><h3>Wheat</h3><div class="legend" id="lg-wheat"></div><div class="chart" id="ch-wheat"></div>
+    <p class="note">Wheat window 40 days (assumed; wheat has no heat window or tier in cc4a-hazards). Tack et al. 2017 give % per +1 °C of season mean in Kansas dryland trials, not a degree-day slope, so a starting temperature must be assumed (slider). A cannot be computed without a degree-day slope; C has no tier to move.</p></div>
+</div>
+
+<h2>2. Kenya seasons</h2>
+<div id="kenya"></div>
+
+<h2>3. Where the options give different answers</h2>
+<div class="card" id="differ"></div>
+
+<h2>References</h2>
+<ul class="note">
+<li>Baskerville GL, Emin P (1969). <i>Ecology</i> 50(3): 514-517. https://doi.org/10.2307/1933912</li>
+<li>Dong X et al. (2023). <i>International Journal of Biometeorology</i> 67(5): 835-846. https://doi.org/10.1007/s00484-023-02458-8 (E-0540)</li>
+<li>Jian Y et al. (2026). <i>Science Advances</i> 12(31): eaed9226. https://doi.org/10.1126/sciadv.aed9226 (E-0542, proxy)</li>
+<li>Lobell DB et al. (2011). <i>Nature Climate Change</i> 1(1): 42-45. https://doi.org/10.1038/nclimate1043 (E-0006, E-0007)</li>
+<li>Lyman NB et al. (2013). <i>PLoS ONE</i> 8(8): e72157. https://doi.org/10.1371/journal.pone.0072157 (E-0541)</li>
+<li>Tack J, Barkley A, Hendricks N (2017). <i>Environmental Research Letters</i> 12(11): 114027. https://doi.org/10.1088/1748-9326/aa8d27 (E-0543)</li>
+</ul>
+</main>
+
+<script>
+const P = /*PARAMS*/null;
+const K = /*KENYA*/null;
+const C = { now: "--s1", A: "--s2", B: "--s3", lyman: "--s4", jian: "--s5" };
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const f1 = x => (Math.round(x * 10) / 10).toFixed(1);
+const f0 = x => Math.round(x).toString();
+
+// ---------- per-day quantities
+function sineDD(e, dtr) {           // degree days above T for a day with Tmax = T + e (Baskerville and Emin 1969)
+  const a = dtr / 2, m = e - a;
+  if (m >= a) return m;
+  if (m <= -a) return 0;
+  const phi = Math.asin(-m / a);
+  return (a * Math.cos(phi) + m * (Math.PI / 2 - phi)) / Math.PI;
+}
+const GQ = (() => { const z = [], w = []; let s = 0;   // normal quadrature, 81 points over +/-4 SD
+  for (let i = 0; i <= 80; i++) { const x = -4 + i * 0.1; z.push(x); const v = Math.exp(-x * x / 2); w.push(v); s += v; }
+  return { z, w: w.map(v => v / s) }; })();
+
+function season(meanT, sd, dtr, days) {
+  const r = { meanT, dd26: 0, dd30: 0, td33: 0, tn22: 0, n3035: 0, n35: 0 };
+  GQ.z.forEach((z, i) => { const t = meanT + z * sd, w = GQ.w[i] * days;
+    r.dd26 += w * sineDD(t - 26, dtr); r.dd30 += w * sineDD(t - 30, dtr);
+    r.td33 += w * Math.max(t - 33, 0); r.tn22 += w * Math.max(t - dtr - 22, 0); });
+  const p30 = 1 - Phi((30 - meanT) / sd), p35 = 1 - Phi((35 - meanT) / sd);   // days above 30 and 35 C
+  r.n35 = days * p35; r.n3035 = days * (p30 - p35);
+  return r;
+}
+function Phi(z) {                    // standard normal CDF (Abramowitz and Stegun 7.1.26)
+  const t = 1 / (1 + 0.3275911 * Math.abs(z) / Math.SQRT2);
+  const e = 1 - t * (0.254829592 + t * (-0.284496736 + t * (1.421413741 + t * (-1.453152027 + t * 1.061405429)))) * Math.exp(-z * z / 2);
+  return z >= 0 ? (1 + e) / 2 : (1 - e) / 2;
+}
+const expLoss = (k, x) => 100 * (1 - Math.exp(-k * x));
+
+function kAFallback(sd, dtr) {      // reference seasons when no Kenya summary: window means 24-34 C, uniform
+  let a = 0, b = 0;
+  for (let t = 24; t <= 34; t += 0.25) { const s = season(t, sd, dtr, 60); a += s.dd30; b += s.dd26; }
+  return P.k_dong * a / b;
+}
+
+// ---------- line chart with crosshair
+function lineChart(host, legendHost, rows, series, opt) {
+  host.innerHTML = ""; legendHost.innerHTML = "";
+  series.forEach(s => { const sp = document.createElement("span"); sp.textContent = s.name;
+    sp.style.setProperty("--c", css(s.color)); if (s.dash) sp.className = "dash"; legendHost.appendChild(sp); });
+  const W = 480, H = 280, m = { l: 40, r: 76, t: 10, b: 36 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": opt.label }, host);
+  const xs = rows.map(r => opt.x(r));
+  const x0 = Math.min(...xs), x1 = Math.max(...xs);
+  const X = v => m.l + (v - x0) / (x1 - x0) * (W - m.l - m.r), Y = v => H - m.b - v / 100 * (H - m.t - m.b);
+  const ax = el("g", { class: "axis" }, svg);
+  [0, 25, 50, 75, 100].forEach(v => { el("line", { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), class: "gridline" }, ax);
+    el("text", { x: m.l - 6, y: Y(v) + 4, "text-anchor": "end" }, ax).textContent = v + "%"; });
+  const step = niceStep((x1 - x0) / 5);
+  for (let v = Math.ceil(x0 / step) * step; v <= x1 + 1e-9; v += step) {
+    el("line", { x1: X(v), x2: X(v), y1: H - m.b, y2: H - m.b + 4 }, ax);
+    el("text", { x: X(v), y: H - m.b + 16, "text-anchor": "middle" }, ax).textContent = +v.toFixed(1); }
+  el("text", { x: (m.l + W - m.r) / 2, y: H - 4, "text-anchor": "middle" }, ax).textContent = opt.xLabel;
+  series.forEach(s => {
+    const d = rows.map((r, i) => `${i ? "L" : "M"}${X(xs[i]).toFixed(1)},${Y(Math.min(100, s.y(r))).toFixed(1)}`).join("");
+    el("path", { d, fill: "none", stroke: css(s.color), "stroke-width": 2, "stroke-dasharray": s.dash ? "5 4" : "none",
+      "stroke-linejoin": "round" }, svg);
+  });
+  // direct labels at the right end, nudged apart
+  const ends = series.map(s => ({ s, y: Y(Math.min(100, s.y(rows[rows.length - 1]))) })).sort((a, b) => a.y - b.y);
+  for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 12) ends[i].y = ends[i - 1].y + 12;
+  ends.forEach(e => { el("text", { x: W - m.r + 6, y: e.y + 4, fill: css("--text-secondary"), "font-size": 11 }, svg)
+    .textContent = e.s.short || e.s.name; });
+  const cross = el("line", { y1: m.t, y2: H - m.b, stroke: css("--text-muted"), "stroke-width": 1, visibility: "hidden" }, svg);
+  const dots = series.map(s => el("circle", { r: 4, fill: css(s.color), stroke: css("--surface-1"), "stroke-width": 2, visibility: "hidden" }, svg));
+  const tip = document.createElement("div"); tip.className = "tip"; host.appendChild(tip);
+  const hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: "transparent" }, svg);
+  hit.addEventListener("mousemove", ev => {
+    const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    let best = 0; xs.forEach((v, i) => { if (Math.abs(X(v) - p.x) < Math.abs(X(xs[best]) - p.x)) best = i; });
+    const r = rows[best];
+    cross.setAttribute("x1", X(xs[best])); cross.setAttribute("x2", X(xs[best])); cross.setAttribute("visibility", "visible");
+    series.forEach((s, j) => { dots[j].setAttribute("cx", X(xs[best])); dots[j].setAttribute("cy", Y(Math.min(100, s.y(r))));
+      dots[j].setAttribute("visibility", "visible"); });
+    tip.innerHTML = opt.tipHead(r) + series.map(s => `<div><i style="background:${css(s.color)}"></i>${s.name}: <b>${f1(Math.min(100, s.y(r)))}%</b></div>`).join("");
+    tip.style.display = "block";
+    const box = host.getBoundingClientRect(), tx = ev.clientX - box.left;
+    tip.style.left = (tx > box.width / 2 ? tx - tip.offsetWidth - 12 : tx + 12) + "px"; tip.style.top = "8px";
+  });
+  hit.addEventListener("mouseleave", () => { tip.style.display = "none"; cross.setAttribute("visibility", "hidden");
+    dots.forEach(d => d.setAttribute("visibility", "hidden")); });
+}
+function niceStep(raw) { const p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p;
+  return (f < 1.5 ? 1 : f < 3 ? 2 : f < 7 ? 5 : 10) * p; }
+
+// ---------- section 1
+function draw() {
+  const dtr = +document.getElementById("dtr").value, sd = +document.getElementById("sd").value;
+  const tref = +document.getElementById("tref").value, xa = document.getElementById("xaxis").value;
+  document.getElementById("dtr-o").textContent = dtr + " °C"; document.getElementById("sd-o").textContent = sd + " °C";
+  document.getElementById("tref-o").textContent = tref + " °C";
+  const kA = K && K.crops.rice ? K.crops.rice.k_A : kAFallback(sd, dtr);
+  document.getElementById("ka-src").textContent = K && K.crops.rice
+    ? `the Kenya seasons (${kA.toFixed(5)}; daily range fixed at ${K.dtr} °C)` : `window means 24-34 °C (${kA.toFixed(5)}; no Kenya summary)`;
+  const sweep = (lo, hi, days) => { const out = []; for (let t = lo; t <= hi + 1e-9; t += 0.1) out.push(season(t, sd, dtr, days)); return out; };
+  const head = base => r => `<div class="k">Window mean Tmax ${f1(r.meanT)} °C · DD&gt;${base} ${f0(base === 26 ? r.dd26 : r.dd30)}</div>`;
+
+  const rice = sweep(20, 36, 60);
+  lineChart(document.getElementById("ch-rice"), document.getElementById("lg-rice"), rice, [
+    { name: "Now: k 0.01 above 26 °C", short: "Now", color: C.now, y: r => expLoss(P.k_general, r.dd26) },
+    { name: `A: k ${kA.toFixed(4)} above 26 °C`, short: "A", color: C.A, y: r => expLoss(kA, r.dd26) },
+    { name: "B = C: Dong, k 0.00303 above 30 °C", short: "B = C", color: C.B, y: r => expLoss(P.k_dong, r.dd30) },
+    { name: "B alt.: Lyman, 0.003 per TD33 + TN22", short: "Lyman", color: C.lyman, dash: true, y: r => expLoss(P.k_lyman, r.td33 + r.tn22) },
+    { name: "B alt.: Jian, % per hot day (proxy)", short: "Jian", color: C.jian, dash: true, y: r => P.jian_30_35 * r.n3035 + P.jian_35 * r.n35 },
+  ], { x: xa === "dd" ? r => r.dd26 : r => r.meanT, xLabel: xa === "dd" ? "Degree days above 26 °C (rice heat_moderate_c)" : "Window mean Tmax (°C)",
+       label: "Rice yield loss against heat exposure under options now, A, B and C", tipHead: r =>
+       `<div class="k">Window mean Tmax ${f1(r.meanT)} °C · DD&gt;26 ${f0(r.dd26)} · DD&gt;30 ${f0(r.dd30)}</div>` });
+
+  const maize = sweep(24, 38, 60);
+  lineChart(document.getElementById("ch-maize"), document.getElementById("lg-maize"), maize, [
+    { name: "Now = A = B = C: Lobell, k 0.01 above 30 °C", short: "All", color: C.now, y: r => expLoss(P.k_general, r.dd30) },
+    { name: "Same, under drought: k 0.017 (high)", short: "Drought", color: C.now, dash: true, y: r => expLoss(P.k_general_high, r.dd30) },
+  ], { x: xa === "dd" ? r => r.dd30 : r => r.meanT, xLabel: xa === "dd" ? "Degree days above 30 °C (maize heat_moderate_c)" : "Window mean Tmax (°C)",
+       label: "Maize yield loss against heat exposure; all options coincide", tipHead: head(30) });
+
+  const wheat = sweep(20, 36, 40);
+  lineChart(document.getElementById("ch-wheat"), document.getElementById("lg-wheat"), wheat, [
+    { name: "Now: k 0.01 above 30 °C (tier assumed)", short: "Now", color: C.now, y: r => expLoss(P.k_general, r.dd30) },
+    { name: `B: Tack, 8 % per °C above ${tref} °C`, short: "Tack 8", color: C.B, y: r => Math.max(0, P.tack_pct_per_c * (r.meanT - tref)) },
+    { name: `B low: Tack, 6 % per °C above ${tref} °C`, short: "Tack 6", color: C.B, dash: true, y: r => Math.max(0, P.tack_low * (r.meanT - tref)) },
+  ], { x: xa === "dd" ? r => r.dd30 : r => r.meanT, xLabel: xa === "dd" ? "Degree days above 30 °C (assumed wheat tier)" : "Window mean Tmax (°C)",
+       label: "Wheat yield loss against heat exposure under the general rule and Tack et al. 2017", tipHead: head(30) });
+}
+
+// ---------- section 2: Kenya
+function scatter(host, legendHost, smp, series, xKey, xLabel) {
+  host.innerHTML = ""; legendHost.innerHTML = "";
+  series.forEach(s => { const sp = document.createElement("span"); sp.className = "dot"; sp.textContent = s.name;
+    sp.style.setProperty("--c", css(s.color)); legendHost.appendChild(sp); });
+  const W = 480, H = 280, m = { l: 40, r: 12, t: 10, b: 36 };
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Kenya season losses by option" }, host);
+  const xs = smp[xKey], x1 = Math.max(...xs) * 1.02;
+  const X = v => m.l + v / x1 * (W - m.l - m.r), Y = v => H - m.b - Math.min(100, v) / 100 * (H - m.t - m.b);
+  const ax = el("g", { class: "axis" }, svg);
+  [0, 25, 50, 75, 100].forEach(v => { el("line", { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), class: "gridline" }, ax);
+    el("text", { x: m.l - 6, y: Y(v) + 4, "text-anchor": "end" }, ax).textContent = v + "%"; });
+  const step = niceStep(x1 / 5);
+  for (let v = 0; v <= x1; v += step) { el("text", { x: X(v), y: H - m.b + 16, "text-anchor": "middle" }, ax).textContent = v; }
+  el("text", { x: (m.l + W - m.r) / 2, y: H - 4, "text-anchor": "middle" }, ax).textContent = xLabel;
+  const pts = [];
+  series.forEach(s => smp[s.key].forEach((y, i) => { pts.push({ x: X(xs[i]), y: Y(y), i, s });
+    el("circle", { cx: X(xs[i]).toFixed(1), cy: Y(y).toFixed(1), r: 2.2, fill: css(s.color), "fill-opacity": 0.55 }, svg); }));
+  const tip = document.createElement("div"); tip.className = "tip"; host.appendChild(tip);
+  const ring = el("circle", { r: 5, fill: "none", stroke: css("--text-primary"), "stroke-width": 1.5, visibility: "hidden" }, svg);
+  const hit = el("rect", { x: 0, y: 0, width: W, height: H, fill: "transparent" }, svg);
+  const tiers = ["none", "moderate", "severe", "extreme"];
+  hit.addEventListener("mousemove", ev => {
+    const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    let best = null, bd = 100;
+    pts.forEach(q => { const d = (q.x - p.x) ** 2 + (q.y - p.y) ** 2; if (d < bd) { bd = d; best = q; } });
+    if (!best) { tip.style.display = "none"; ring.setAttribute("visibility", "hidden"); return; }
+    ring.setAttribute("cx", best.x); ring.setAttribute("cy", best.y); ring.setAttribute("visibility", "visible");
+    const i = best.i;
+    tip.innerHTML = `<div class="k">Season: ${tiers[smp.tier[i]]} tier · DD above threshold ${f0(xs[i])}${smp.dd30 ? " · DD&gt;30 " + f0(smp.dd30[i]) : ""}</div>` +
+      series.map(s => `<div><i style="background:${css(s.color)}"></i>${s.name}: <b>${f1(smp[s.key][i])}%</b></div>`).join("");
+    tip.style.display = "block";
+    const box = host.getBoundingClientRect(), tx = ev.clientX - box.left;
+    tip.style.left = (tx > box.width / 2 ? tx - tip.offsetWidth - 12 : tx + 12) + "px"; tip.style.top = "8px";
+  });
+  hit.addEventListener("mouseleave", () => { tip.style.display = "none"; ring.setAttribute("visibility", "hidden"); });
+}
+
+const pct = x => (100 * x).toFixed(1) + "%";
+const trio = a => a ? `${f1(a[1])} <span class="note">(${f1(a[0])}–${f1(a[2])})</span>` : "–";
+function kenya() {
+  const host = document.getElementById("kenya");
+  if (!K) { host.innerHTML = `<p class="card">No Kenya summary in this build. Run the script with <code>--cube</code>.</p>`; return; }
+  host.innerHTML = `<p>Kenya dekad cube (corrected Tmax), ${K.years[0]}–${K.years[1]}, ${K.cells.toLocaleString()} land cells, sown in dekads ${K.sowings.join(" and ")}, no crop mask. Degree days from the hot-day ladder with a daily range of ${K.dtr} °C. Tiers by the day rules of the 23 Nov tier check. Cells: median loss in the tier, with the 25th–75th percentile in brackets.</p>
+  <div class="grid3">
+    <div class="card"><h3>Rice: loss per season</h3><div class="legend" id="lg-kr"></div><div class="chart" id="ch-kr"></div>
+      <p class="note">Up to 400 seasons sampled per tier. Same seasons, three equations.</p></div>
+    <div class="card"><h3>Maize: loss per season</h3><div class="legend" id="lg-km"></div><div class="chart" id="ch-km"></div>
+      <p class="note">All options coincide for maize.</p></div>
+  </div>
+  <div class="card scroll" id="tb-rice"></div><div class="card scroll" id="tb-maize"></div>`;
+  const r = K.crops.rice, mz = K.crops.maize;
+  scatter(document.getElementById("ch-kr"), document.getElementById("lg-kr"), r.sample, [
+    { name: "Now", key: "loss_now", color: C.now }, { name: "A", key: "loss_A", color: C.A },
+    { name: "B = C (Dong)", key: "loss_B", color: C.B }], "dd_moderate", "Degree days above 26 °C in the season");
+  scatter(document.getElementById("ch-km"), document.getElementById("lg-km"), mz.sample, [
+    { name: "Now = A = B = C", key: "loss_now", color: C.now }], "dd_moderate", "Degree days above 30 °C in the season");
+  const tiers = ["none", "moderate", "severe", "extreme"];
+  const opts = [["now", "Now"], ["A", "A"], ["B", "B = C (Dong)"], ["B_lyman", "B alt. Lyman"], ["B_jian", "B alt. Jian (proxy)"]];
+  let h = `<h3>Rice, tiers at ${r.thresholds.join(" / ")} °C (now, A, B)</h3><table><thead><tr><th>Tier</th><th>Share of seasons</th>` +
+    opts.map(o => `<th>${o[1]}</th>`).join("") + `</tr></thead><tbody>`;
+  tiers.forEach(t => { h += `<tr><td>${t}</td><td>${pct(r.share[t])}</td>` + opts.map(o => `<td>${trio(r.tier_loss[o[0]][t])}</td>`).join("") + "</tr>"; });
+  h += `</tbody></table><h3 style="margin-top:14px">Rice, option C: tiers moved to ${r.c_thresholds.join(" / ")} °C</h3><table><thead><tr><th>Tier</th><th>Share of seasons</th><th>Loss (B = C)</th></tr></thead><tbody>`;
+  tiers.forEach(t => { h += `<tr><td>${t}</td><td>${pct(r.c_share[t])}</td><td>${trio(r.c_tier_loss[t])}</td></tr>`; });
+  h += `</tbody></table><p class="note">k<sub>A</sub> = 0.00303 × ${f1(r.mean_dd30)} ÷ ${f1(r.mean_dd_moderate)} = ${r.k_A.toFixed(5)} (mean degree days above 30 and 26 °C over all ${r.n_seasons.toLocaleString()} seasons).</p>`;
+  document.getElementById("tb-rice").innerHTML = h;
+  let g = `<h3>Maize, tiers at ${mz.thresholds.join(" / ")} °C</h3><table><thead><tr><th>Tier</th><th>Share of seasons</th><th>Now = A = B = C</th></tr></thead><tbody>`;
+  tiers.forEach(t => { g += `<tr><td>${t}</td><td>${pct(mz.share[t])}</td><td>${trio(mz.tier_loss.now[t])}</td></tr>`; });
+  document.getElementById("tb-maize").innerHTML = g + "</tbody></table>";
+}
+
+function differ() {
+  const host = document.getElementById("differ");
+  const r = K && K.crops.rice;
+  const L = (o, t) => r ? f1(r.tier_loss[o][t][1]) + "%" : "–";
+  host.innerHTML = `<ul>
+  <li><b>Maize:</b> no difference. The tier and the slope share a 30 °C base.</li>
+  <li><b>Rice, A against B:</b> A spreads the loss over every degree day above 26 °C. It gives more loss than B to mild and middling seasons and less to the hottest (the lines cross near 150 degree days above 26 °C). ${r ? `Moderate tier, median: A ${L("A", "moderate")}, B ${L("B", "moderate")}. Extreme tier, median: A ${L("A", "extreme")}, B ${L("B", "extreme")}; 75th percentile: A ${f1(r.tier_loss.A.extreme[2])}%, B ${f1(r.tier_loss.B.extreme[2])}%. A and B differ by more than 5 points in ${pct(r.differ.A_vs_B_gt5pp_in_heat_tiers)} of seasons in a heat tier.` : ""}</li>
+  <li><b>Rice, now against B:</b> the maize k (0.01) counted from 26 °C gives far more loss than Dong's slope counted from 30 °C. ${r ? `Median loss, moderate tier: now ${L("now", "moderate")}, B ${L("B", "moderate")}; severe: now ${L("now", "severe")}, B ${L("B", "severe")}; extreme: now ${L("now", "extreme")}, B ${L("B", "extreme")}. They differ by more than 5 points in ${pct(r.differ.now_vs_B_gt5pp)} of all seasons.` : ""}</li>
+  <li><b>Rice, B against C:</b> the same loss per season; the tiers differ. ${r ? `Under B, ${pct(r.differ.B_moderate_zero)} of moderate-tier seasons show under 0.5 % loss (no hour above 30 °C to speak of). Under C the moderate tier holds ${pct(r.c_share.moderate)} of seasons, against ${pct(r.share.moderate)} under B.` : ""}</li>
+  <li><b>Rice, equation forms:</b> Dong and Lyman have the same coefficient (about 0.003) on different counts. Lyman's day-and-night count is lower in milder seasons and climbs faster in the hottest. ${r ? `Extreme tier, median: Lyman ${L("B_lyman", "extreme")}, Dong ${L("B", "extreme")}; 75th percentile: Lyman ${f1(r.tier_loss.B_lyman.extreme[2])}%, Dong ${f1(r.tier_loss.B.extreme[2])}%.` : ""} Jian (exposure days, proxy) counts whole hot days, so it gives the most loss at a given exposure${r ? ` (extreme tier median ${L("B_jian", "extreme")})` : ""}.</li>
+  <li><b>Wheat:</b> the answer depends on the starting temperature assumed for Tack's slope. Without a wheat heat tier and a degree-day slope (Shew et al. 2020 is next), no option can be applied.</li>
+  </ul>`;
+}
+
+["dtr", "sd", "tref", "xaxis"].forEach(id => document.getElementById(id).addEventListener("input", draw));
+draw(); kenya(); differ();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { draw(); kenya(); });
+</script>
+</body>
+</html>
